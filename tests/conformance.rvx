@@ -1,0 +1,44 @@
+
+// 1. Core Syntax & Logic
+செயல் testCore() {
+    மாறி அ = 10
+    மாறி ஆ = 20
+    #std.test.assert(அ + ஆ == 30, "Addition failed")
+    
+    மாறி x = 1
+    பொருத்து x {
+        1 { #std.print("One") }
+        2 { #std.print("Two") }
+    }
+}
+#std.test.describe("Core Syntax", testCore)
+
+// 2. Concurrency (Async/Await)
+ஒத்திசைவற்ற செயல் testAsync() {
+    ஒத்திசைவற்ற செயல் getData() {
+        திருப்பு "Success"
+    }
+    மாறி result = காத்திரு getData()
+    #std.test.assert(result == "Success", "Async/Await failed")
+}
+காத்திரு #std.test.describe("Concurrency", testAsync)
+
+// 3. Error Handling & Sovereignty
+செயல் testError() {
+    முயற்சி {
+        எறி "Runtime Error"
+    } பிடி (e) {
+        #std.test.assert(e == "Runtime Error", "Throw/Catch failed")
+    }
+}
+#std.test.describe("Error Handling", testError)
+
+// 4. StdLib - Crypto
+செயல் testCrypto() {
+    மாறி data = "Ritam"
+    மாறி h = #std.crypto.hash(data)
+    #std.test.assert(h != "", "Crypto Hash failed")
+}
+#std.test.describe("StdLib - Crypto", testCrypto)
+
+#std.print("✅ All Conformance Tests passed")

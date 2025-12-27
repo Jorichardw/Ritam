@@ -1,0 +1,25 @@
+
+// Test else_if logic
+செயல் testElseIf() {
+    மாறி x = 10
+    எனில் x == 5 {
+        $std.print("Five")
+    } இல்லையேல் ஆனால் x == 10 {
+        $std.print("Ten")
+    } இல்லையேல் {
+        $std.print("Other")
+    }
+}
+
+// Test $ prefix (Sovereign)
+செயல் testSovereign() {
+    மாறி h = $std.crypto.hash("Sovereign")
+    எனில் h != "" {
+        $std.print("Hash Success: " + h)
+    }
+}
+
+testElseIf()
+testSovereign()
+
+$std.print("✅ Web Model Verification Complete")

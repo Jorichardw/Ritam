@@ -1,0 +1,34 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Generated Code in examples
+examples/*.js
+*.js
+!jest.config.js
+!src/**/*.js
+
+# Logs
+*.log
+npm-debug.log*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment files
+.env
+.env.local
+
+# Test output
+coverage/
+.tmp_run.js
+tests/.tmp_run.js

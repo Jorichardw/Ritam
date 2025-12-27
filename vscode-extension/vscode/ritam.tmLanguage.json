@@ -1,0 +1,64 @@
+{
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+    "name": "Ritam",
+    "scopeName": "source.rvx",
+    "patterns": [
+        {
+            "include": "#keywords"
+        },
+        {
+            "include": "#strings"
+        },
+        {
+            "include": "#comments"
+        },
+        {
+            "include": "#numbers"
+        }
+    ],
+    "repository": {
+        "keywords": {
+            "patterns": [
+                {
+                    "name": "keyword.control.ritam",
+                    "match": "\\b(எனில்|இல்லையேல்|சுழற்சி|ஒவ்வொன்றாக|திருப்பு|பொருத்து|இருந்து|இறக்குமதி|ஏற்றுமதி|அங்க|अगर|वरना|जबतक|हर|लौटाओ|मिलाओ|से|आयात|निर्यात|si|sino|mientras|para|retornar|coincidir|desde|importar|exportar)\\b"
+                },
+                {
+                    "name": "keyword.declaration.ritam",
+                    "match": "\\b(மாறி|நிலையான|செயல்|கட்டமைப்பு|பட்டியல்|கூறு|चर|स्थिर|कार्य|संरचना|गणना|अंग|variable|constante|funcion|estructura|enumeracion|componente)\\b"
+                },
+                {
+                    "name": "support.function.ritam",
+                    "match": "\\b(பதிவிடு|காண்பி|छापो|प्रस्तुत|imprimir|renderizar)\\b"
+                },
+                {
+                    "name": "constant.language.ritam",
+                    "match": "\\b(true|false|வெற்று|சத்தியம்|அசத்தியம்|शून्य|verdadero|falso|nulo)\\b"
+                }
+            ]
+        },
+        "strings": {
+            "name": "string.quoted.double.ritam",
+            "begin": "\"",
+            "end": "\"",
+            "patterns": [
+                {
+                    "name": "constant.character.escape.ritam",
+                    "match": "\\\\."
+                }
+            ]
+        },
+        "numbers": {
+            "name": "constant.numeric.ritam",
+            "match": "\\b\\d+(\\.\\d+)?\\b"
+        },
+        "comments": {
+            "patterns": [
+                {
+                    "name": "comment.line.double-slash.ritam",
+                    "match": "//.*$"
+                }
+            ]
+        }
+    }
+}

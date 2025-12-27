@@ -1,0 +1,63 @@
+{
+  "name": "ritam",
+  "version": "0.1.2",
+  "description": "A universal, native-language functional programming language for the web",
+  "main": "dist/cli.js",
+  "bin": {
+    "ritam": "./dist/cli.js",
+    "ritam-lsp": "./dist/ritam-lsp.js"
+  },
+  "files": [
+    "dist/",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md",
+    "docs/"
+  ],
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "copy-locales": "xcopy /Y /I /E src\\locales dist\\locales",
+    "build": "tsc && npm run copy-locales",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "compiler",
+    "programming-language",
+    "multilingual",
+    "tamil",
+    "hindi",
+    "telugu",
+    "kannada",
+    "malayalam",
+    "spanish",
+    "native-language",
+    "transpiler",
+    "web",
+    "sovereign",
+    "india"
+  ],
+  "author": "Richard Williyam <dank2joe@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RichardWilliyam/ritam.git"
+  },
+  "homepage": "https://github.com/RichardWilliyam/ritam#readme",
+  "bugs": {
+    "url": "https://github.com/RichardWilliyam/ritam/issues"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "devDependencies": {
+    "@types/inquirer": "^9.0.9",
+    "@types/node": "^18.0.0",
+    "ts-node": "^10.9.0",
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "commander": "^11.0.0",
+    "inquirer": "^8.2.5"
+  }
+}

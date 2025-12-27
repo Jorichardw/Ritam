@@ -1,0 +1,21 @@
+// Ritam Spanish Logic Example (Ejemplo de Lógica en Español)
+funcion calcular_total(precio, cantidad) {
+    retornar precio * cantidad
+}
+
+variable subtotal = calcular_total(100, 5)
+si (subtotal > 400) {
+    imprimir("¡Descuento aplicado!")
+    subtotal = subtotal - 50
+} sino {
+    imprimir("Precio normal")
+}
+
+imprimir("Total final: " + subtotal)
+
+// For loop example
+para item en [1, 2, 3, 4, 5] {
+    imprimir("Item: " + item)
+}
+
+#std.print("Ritam Sovereign Spanish")

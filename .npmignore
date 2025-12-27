@@ -1,0 +1,44 @@
+# Source files (we ship compiled dist/)
+src/
+
+# Development files
+*.ts
+!dist/**/*.js
+tsconfig.json
+
+# Examples (optional to include)
+examples/
+
+# Tests
+tests/
+
+# Development artifacts
+node_modules/
+.github/
+.vscode/
+.idea/
+.gitignore
+.tmp_run.js
+debug_tokens.js
+
+# Documentation site (keep docs/ for reference)
+docs-site/
+
+# VS Code extension (separate package)
+vscode-extension/
+
+# Scripts
+scripts/
+
+# Config files
+ritam.json
+
+# Git
+.git/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Assets (if large)
+assets/

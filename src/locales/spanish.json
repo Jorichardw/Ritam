@@ -1,0 +1,48 @@
+{
+    "meta": {
+        "name": "Spanish",
+        "code": "es",
+        "direction": "ltr"
+    },
+    "keywords": {
+        "var": "variable",
+        "const": "constante",
+        "print": "imprimir",
+        "if": "si",
+        "else": "sino",
+        "else_if": "sino si",
+        "function": "funcion",
+        "return": "retornar",
+        "struct": "estructura",
+        "enum": "enumeracion",
+        "while": "mientras",
+        "match": "coincidir",
+        "true": "verdadero",
+        "false": "falso",
+        "null": "nulo",
+        "component": "componente",
+        "render": "renderizar",
+        "click": "clic",
+        "tag": "etiqueta",
+        "text": "texto",
+        "attr": "atributo",
+        "for": "para",
+        "in": "en",
+        "import": "importar",
+        "export": "exportar",
+        "from": "desde",
+        "async": "asincrono",
+        "await": "esperar",
+        "try": "intentar",
+        "catch": "atrapar",
+        "throw": "lanzar"
+    },
+    "messages": {
+        "welcome": "¡Hola! Bienvenido a Ritam. Por favor selecciona tu idioma.",
+        "project_created": "Proyecto creado exitosamente.",
+        "error_syntax": "Error de sintaxis",
+        "error_variable_undefined": "Variable no definida",
+        "error_unexpected_token": "Token inesperado '{0}' en la línea {1}",
+        "error_expected_token": "Se esperaba '{0}' pero se encontró '{1}' en la línea {2}"
+    }
+}
