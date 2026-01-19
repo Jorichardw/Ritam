@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.2.2] - 2026-01-19
+### Fixed
+- **Critical:** Fixed locale path resolution in `LanguageManager.ts` - locales are now correctly loaded from `dist/locales/`.
+- **Critical:** Fixed runtime source injection in `NodeGenerator.ts` - the Ritam runtime is now properly embedded in generated Node.js code.
+- Fixed `copy-locales` script in `package.json` to copy locale files to the correct directory structure.
+- Fixed CI/CD workflow paths in `.github/workflows/ci.yml` to use the correct CLI path after folder restructure.
+- All 7 language test suites now pass (Tamil, Hindi, Telugu, Kannada, Malayalam, Spanish, English).
+- All compilation targets verified working (Node.js, Web, Mobile/Swift, React Native).
+- Conformance test suite passes 100%.
+
+### Changed
+- Synchronized version numbers across all project files (package.json, ritam.json, VS Code extension).
+
 ## [0.1.2] - 2025-12-27
 ### Added
 - Multi-word keyword support for complex native language expressions.

@@ -1,0 +1,95 @@
+# Ritam CI/CD Pipeline
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x, 18.x, 20.x]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build project
+        run: npm run build
+
+      - name: Run linter
+        run: npm run lint
+
+      - name: Run Tamil tests
+        run: node dist/tooling/cli/index.js run examples/tamil_logic.rvx --lang Tamil
+
+      - name: Run Hindi tests
+        run: node dist/tooling/cli/index.js run examples/hindi_logic.rvx --lang Hindi
+
+      - name: Run Kannada tests
+        run: node dist/tooling/cli/index.js run examples/kannada_counter.rvx --lang Kannada
+
+      - name: Run Telugu tests
+        run: node dist/tooling/cli/index.js run examples/telugu_logic.rvx --lang Telugu
+
+      - name: Run Malayalam tests
+        run: node dist/tooling/cli/index.js run examples/malayalam_logic.rvx --lang Malayalam
+
+      - name: Run Spanish tests
+        run: node dist/tooling/cli/index.js run examples/spanish_logic.rvx --lang Spanish
+
+      - name: Test Web compilation
+        run: node dist/tooling/cli/index.js compile examples/counter_web_app.rvx -t web --lang Tamil
+
+      - name: Test Mobile compilation
+        run: node dist/tooling/cli/index.js compile examples/mobile_app.rvx -t mobile --lang Tamil
+
+      - name: Test React Native compilation
+        run: node dist/tooling/cli/index.js compile examples/react_native_app.rvx -t react-native --lang Tamil
+
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Publish to npm (if version changed)
+        run: |
+          PUBLISHED_VERSION=$(npm view ritam version 2>/dev/null || echo "0.0.0")
+          CURRENT_VERSION=$(node -p "require('./package.json').version")
+          if [ "$PUBLISHED_VERSION" != "$CURRENT_VERSION" ]; then
+            npm publish
+          else
+            echo "Version $CURRENT_VERSION already published, skipping..."
+          fi
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

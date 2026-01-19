@@ -3,10 +3,31 @@
         "target": "es2020",
         "module": "commonjs",
         "outDir": "./dist",
-        "rootDir": "./src",
+        "rootDir": ".",
         "strict": true,
         "esModuleInterop": true,
         "skipLibCheck": true,
-        "forceConsistentCasingInFileNames": true
-    }
+        "forceConsistentCasingInFileNames": true,
+        "baseUrl": ".",
+        "paths": {
+            "@language/*": [
+                "language/*"
+            ],
+            "@tooling/*": [
+                "tooling/*"
+            ],
+            "@assets/*": [
+                "assets/*"
+            ]
+        }
+    },
+    "exclude": [
+        "node_modules",
+        "dist",
+        "tooling/vscode"
+    ],
+    "include": [
+        "language/**/*",
+        "tooling/**/*"
+    ]
 }

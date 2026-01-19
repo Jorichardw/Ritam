@@ -1,0 +1,7 @@
+// Ritam Node Example - main.rvx
+செயல் வணக்கம்() {
+    #std.print("வணக்கம்! இது Ritam Node.js இலக்கு.")
+    #std.print("நேரம்: " + #std.crypto.random())
+}
+
+வணக்கம்()

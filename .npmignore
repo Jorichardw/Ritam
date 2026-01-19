@@ -1,5 +1,7 @@
 # Source files (we ship compiled dist/)
 src/
+language/
+tooling/
 
 # Development files
 *.ts
@@ -21,14 +23,11 @@ node_modules/
 .tmp_run.js
 debug_tokens.js
 
-# Documentation site (keep docs/ for reference)
-docs-site/
-
-# VS Code extension (separate package)
-vscode-extension/
-
-# Scripts
-scripts/
+# Documentation
+docs/
+tooling/docs/
+tooling/vscode/
+tooling/web-demo/
 
 # Config files
 ritam.json
@@ -40,5 +39,3 @@ ritam.json
 .DS_Store
 Thumbs.db
 
-# Assets (if large)
-assets/

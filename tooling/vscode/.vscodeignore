@@ -1,0 +1,12 @@
+src/**
+node_modules/**
+*.ts
+*.map
+tsconfig.json
+build.js
+package-lock.json
+README.md
+docs/**
+tests/**
+.vscode/**
+.git/**

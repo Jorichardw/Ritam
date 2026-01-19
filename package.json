@@ -1,24 +1,39 @@
 {
   "name": "ritam",
-  "version": "0.1.2",
+  "version": "0.2.2",
   "description": "A universal, native-language functional programming language for the web",
-  "main": "dist/cli.js",
+  "main": "dist/tooling/cli/index.js",
   "bin": {
-    "ritam": "./dist/cli.js",
-    "ritam-lsp": "./dist/ritam-lsp.js"
+    "ritam": "dist/tooling/cli/index.js",
+    "ritam-lsp": "dist/tooling/lsp/index.js"
   },
   "files": [
     "dist/",
     "README.md",
     "LICENSE",
-    "CHANGELOG.md",
-    "docs/"
+    "CHANGELOG.md"
   ],
   "scripts": {
-    "start": "ts-node src/index.ts",
-    "copy-locales": "xcopy /Y /I /E src\\locales dist\\locales",
-    "build": "tsc && npm run copy-locales",
-    "prepublishOnly": "npm run build"
+    "dev": "ts-node -r tsconfig-paths/register tooling/cli/index.ts",
+    "build": "tsc && tsc-alias && npm run copy-locales",
+    "copy-locales": "npx copyfiles -u 1 \"assets/locales/**/*\" dist/",
+    "start": "node dist/tooling/cli/index.js",
+    "prepublishOnly": "npm run build",
+    "test": "node dist/tooling/cli/index.js run tests/conformance.rvx --lang Tamil",
+    "test:all": "npm run test:tamil && npm run test:hindi && npm run test:kannada && npm run test:telugu && npm run test:malayalam && npm run test:spanish && npm run test:web",
+    "test:tamil": "node dist/tooling/cli/index.js run examples/tamil_logic.rvx --lang Tamil",
+    "test:hindi": "node dist/tooling/cli/index.js run examples/hindi_logic.rvx --lang Hindi",
+    "test:kannada": "node dist/tooling/cli/index.js run examples/kannada_counter.rvx --lang Kannada",
+    "test:telugu": "node dist/tooling/cli/index.js run examples/telugu_logic.rvx --lang Telugu",
+    "test:malayalam": "node dist/tooling/cli/index.js run examples/malayalam_logic.rvx --lang Malayalam",
+    "test:spanish": "node dist/tooling/cli/index.js run examples/spanish_logic.rvx --lang Spanish",
+    "test:web": "node dist/tooling/cli/index.js compile examples/counter_web_app.rvx -t web --lang Tamil",
+    "test:mobile": "node dist/tooling/cli/index.js compile examples/mobile_app.rvx -t mobile --lang Tamil",
+    "test:react-native": "node dist/tooling/cli/index.js compile examples/react_native_app.rvx -t react-native --lang Tamil",
+    "lint": "tsc --noEmit",
+    "docs:dev": "vitepress dev ./tooling/docs",
+    "docs:build": "vitepress build ./tooling/docs",
+    "docs:preview": "vitepress preview ./tooling/docs"
   },
   "keywords": [
     "compiler",
@@ -40,7 +55,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/RichardWilliyam/ritam.git"
+    "url": "git+https://github.com/RichardWilliyam/ritam.git"
   },
   "homepage": "https://github.com/RichardWilliyam/ritam#readme",
   "bugs": {
@@ -53,7 +68,13 @@
     "@types/inquirer": "^9.0.9",
     "@types/node": "^18.0.0",
     "ts-node": "^10.9.0",
-    "typescript": "^5.0.0"
+    "tsc-alias": "^1.8.16",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.0.0",
+    "vitepress": "^1.6.4",
+    "vscode-languageserver": "^9.0.1",
+    "vscode-languageserver-textdocument": "^1.0.12",
+    "vue": "^3.5.26"
   },
   "dependencies": {
     "chalk": "^4.1.2",

@@ -1,0 +1,340 @@
+{
+    "Tamil - Variable Declaration": {
+        "prefix": [
+            "மாறி",
+            "var-tamil"
+        ],
+        "body": [
+            "மாறி ${1:பெயர்} = ${2:மதிப்பு}"
+        ],
+        "description": "Declare a variable (Tamil)"
+    },
+    "Tamil - Function Declaration": {
+        "prefix": [
+            "செயல்",
+            "func-tamil"
+        ],
+        "body": [
+            "செயல் ${1:பெயர்}(${2:அளவுருக்கள்}) {",
+            "    ${3:// code}",
+            "    திருப்பு ${4:மதிப்பு}",
+            "}"
+        ],
+        "description": "Declare a function (Tamil)"
+    },
+    "Tamil - If Statement": {
+        "prefix": [
+            "எனில்",
+            "if-tamil"
+        ],
+        "body": [
+            "எனில் (${1:நிபந்தனை}) {",
+            "    ${2:// code}",
+            "}"
+        ],
+        "description": "If statement (Tamil)"
+    },
+    "Tamil - If-Else Statement": {
+        "prefix": [
+            "எனில்-இல்லையேல்",
+            "ifelse-tamil"
+        ],
+        "body": [
+            "எனில் (${1:நிபந்தனை}) {",
+            "    ${2:// true}",
+            "} இல்லையேல் {",
+            "    ${3:// false}",
+            "}"
+        ],
+        "description": "If-else statement (Tamil)"
+    },
+    "Tamil - While Loop": {
+        "prefix": [
+            "சுழற்சி",
+            "while-tamil"
+        ],
+        "body": [
+            "சுழற்சி (${1:நிபந்தனை}) {",
+            "    ${2:// code}",
+            "}"
+        ],
+        "description": "While loop (Tamil)"
+    },
+    "Tamil - For Loop": {
+        "prefix": [
+            "ஒவ்வொன்றாக",
+            "for-tamil"
+        ],
+        "body": [
+            "ஒவ்வொன்றாக ${1:உறுப்பு} உள்ள ${2:பட்டியல்} {",
+            "    ${3:// code}",
+            "}"
+        ],
+        "description": "For loop (Tamil)"
+    },
+    "Tamil - Component": {
+        "prefix": [
+            "கூறு",
+            "component-tamil"
+        ],
+        "body": [
+            "கூறு ${1:பெயர்} {",
+            "    காண்பி \"div\" {",
+            "        ${2:// UI}",
+            "    }",
+            "}"
+        ],
+        "description": "UI Component (Tamil)"
+    },
+    "Tamil - Print": {
+        "prefix": [
+            "பதிவிடு",
+            "print-tamil"
+        ],
+        "body": [
+            "#std.print(${1:\"message\"})"
+        ],
+        "description": "Print to console (Tamil)"
+    },
+    "Tamil - Struct": {
+        "prefix": [
+            "கட்டமைப்பு",
+            "struct-tamil"
+        ],
+        "body": [
+            "கட்டமைப்பு ${1:பெயர்} {",
+            "    ${2:புலம்}",
+            "}"
+        ],
+        "description": "Struct declaration (Tamil)"
+    },
+    "Hindi - Variable Declaration": {
+        "prefix": [
+            "चर",
+            "var-hindi"
+        ],
+        "body": [
+            "चर ${1:नाम} = ${2:मान}"
+        ],
+        "description": "Declare a variable (Hindi)"
+    },
+    "Hindi - Function Declaration": {
+        "prefix": [
+            "कार्य",
+            "func-hindi"
+        ],
+        "body": [
+            "कार्य ${1:नाम}(${2:पैरामीटर}) {",
+            "    ${3:// code}",
+            "    लौटाओ ${4:मान}",
+            "}"
+        ],
+        "description": "Declare a function (Hindi)"
+    },
+    "Hindi - If Statement": {
+        "prefix": [
+            "अगर",
+            "if-hindi"
+        ],
+        "body": [
+            "अगर (${1:शर्त}) {",
+            "    ${2:// code}",
+            "}"
+        ],
+        "description": "If statement (Hindi)"
+    },
+    "Hindi - Print": {
+        "prefix": [
+            "छापो",
+            "print-hindi"
+        ],
+        "body": [
+            "#std.print(${1:\"message\"})"
+        ],
+        "description": "Print to console (Hindi)"
+    },
+    "Telugu - Variable Declaration": {
+        "prefix": [
+            "చరరాశి",
+            "var-telugu"
+        ],
+        "body": [
+            "చరరాశి ${1:పేరు} = ${2:విలువ}"
+        ],
+        "description": "Declare a variable (Telugu)"
+    },
+    "Telugu - Function Declaration": {
+        "prefix": [
+            "పనితీరు",
+            "func-telugu"
+        ],
+        "body": [
+            "పనితీరు ${1:పేరు}(${2:పారామీటర్లు}) {",
+            "    ${3:// code}",
+            "    తిరిగివ్వు ${4:విలువ}",
+            "}"
+        ],
+        "description": "Declare a function (Telugu)"
+    },
+    "Kannada - Variable Declaration": {
+        "prefix": [
+            "ಅಸ್ಥಿರ",
+            "var-kannada"
+        ],
+        "body": [
+            "ಅಸ್ಥಿರ ${1:ಹೆಸರು} = ${2:ಮೌಲ್ಯ}"
+        ],
+        "description": "Declare a variable (Kannada)"
+    },
+    "Kannada - Function Declaration": {
+        "prefix": [
+            "ಕಾರ್ಯ",
+            "func-kannada"
+        ],
+        "body": [
+            "ಕಾರ್ಯ ${1:ಹೆಸರು}(${2:ಪ್ಯಾರಾಮೀಟರ್}) {",
+            "    ${3:// code}",
+            "    ಹಿಂತಿರುಗಿಸು ${4:ಮೌಲ್ಯ}",
+            "}"
+        ],
+        "description": "Declare a function (Kannada)"
+    },
+    "Malayalam - Variable Declaration": {
+        "prefix": [
+            "ചരം",
+            "var-malayalam"
+        ],
+        "body": [
+            "ചരം ${1:പേര്} = ${2:മൂല്യം}"
+        ],
+        "description": "Declare a variable (Malayalam)"
+    },
+    "Malayalam - Function Declaration": {
+        "prefix": [
+            "ഫങ്ഷൻ",
+            "func-malayalam"
+        ],
+        "body": [
+            "ഫങ്ഷൻ ${1:പേര്}(${2:പാരാമീറ്ററുകൾ}) {",
+            "    ${3:// code}",
+            "    തിരികെ ${4:മൂല്യം}",
+            "}"
+        ],
+        "description": "Declare a function (Malayalam)"
+    },
+    "Spanish - Variable Declaration": {
+        "prefix": [
+            "variable",
+            "var-spanish"
+        ],
+        "body": [
+            "variable ${1:nombre} = ${2:valor}"
+        ],
+        "description": "Declare a variable (Spanish)"
+    },
+    "Spanish - Function Declaration": {
+        "prefix": [
+            "funcion",
+            "func-spanish"
+        ],
+        "body": [
+            "funcion ${1:nombre}(${2:parametros}) {",
+            "    ${3:// code}",
+            "    retornar ${4:valor}",
+            "}"
+        ],
+        "description": "Declare a function (Spanish)"
+    },
+    "Spanish - If Statement": {
+        "prefix": [
+            "si",
+            "if-spanish"
+        ],
+        "body": [
+            "si (${1:condicion}) {",
+            "    ${2:// code}",
+            "}"
+        ],
+        "description": "If statement (Spanish)"
+    },
+    "Std - Print": {
+        "prefix": [
+            "#std.print",
+            "print"
+        ],
+        "body": [
+            "#std.print(${1:value})"
+        ],
+        "description": "Print to console"
+    },
+    "Std - Math Add": {
+        "prefix": [
+            "#std.math.add",
+            "add"
+        ],
+        "body": [
+            "#std.math.add(${1:a}, ${2:b})"
+        ],
+        "description": "Add two numbers"
+    },
+    "Std - String Length": {
+        "prefix": [
+            "#std.str.len",
+            "strlen"
+        ],
+        "body": [
+            "#std.str.len(${1:string})"
+        ],
+        "description": "Get string length"
+    },
+    "Std - List Push": {
+        "prefix": [
+            "#std.list.push",
+            "listpush"
+        ],
+        "body": [
+            "#std.list.push(${1:list}, ${2:item})"
+        ],
+        "description": "Add item to list"
+    },
+    "Std - File Read": {
+        "prefix": [
+            "#std.file.read",
+            "fileread"
+        ],
+        "body": [
+            "#std.file.read(${1:path})"
+        ],
+        "description": "Read file contents"
+    },
+    "Std - Time Now": {
+        "prefix": [
+            "#std.time.now",
+            "timenow"
+        ],
+        "body": [
+            "#std.time.now()"
+        ],
+        "description": "Get current timestamp"
+    },
+    "Std - Test Assert": {
+        "prefix": [
+            "#std.test.assert",
+            "assert"
+        ],
+        "body": [
+            "#std.test.assert(${1:condition}, ${2:\"message\"})"
+        ],
+        "description": "Assert condition in test"
+    },
+    "Std - JSON Parse": {
+        "prefix": [
+            "#std.json.parse",
+            "jsonparse"
+        ],
+        "body": [
+            "#std.json.parse(${1:jsonString})"
+        ],
+        "description": "Parse JSON string"
+    }
+}

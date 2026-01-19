@@ -1,0 +1,15 @@
+// Ritam Web Example - app.rvx
+கூறு முதன்மை {
+    காண்பி "div" {
+        பண்பு "style" "padding: 20px; text-align: center;"
+        காண்பி "h1" "Ritam Web App"
+        காண்பி "p" "Compiled to Web Target"
+        காண்பி "button" "Click Me" {
+            சுடுக்கு வணக்கம்
+        }
+    }
+}
+
+செயல் வணக்கம்() {
+    #std.print("வலைப்பக்கத்தில் வணக்கம்!")
+}

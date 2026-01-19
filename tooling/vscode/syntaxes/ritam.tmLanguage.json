@@ -1,0 +1,263 @@
+{
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+    "name": "Ritam",
+    "scopeName": "source.ritam",
+    "patterns": [
+        {
+            "include": "#comments"
+        },
+        {
+            "include": "#strings"
+        },
+        {
+            "include": "#numbers"
+        },
+        {
+            "include": "#keywords-tamil"
+        },
+        {
+            "include": "#keywords-hindi"
+        },
+        {
+            "include": "#keywords-telugu"
+        },
+        {
+            "include": "#keywords-kannada"
+        },
+        {
+            "include": "#keywords-malayalam"
+        },
+        {
+            "include": "#keywords-spanish"
+        },
+        {
+            "include": "#keywords-english"
+        },
+        {
+            "include": "#sovereign"
+        },
+        {
+            "include": "#operators"
+        },
+        {
+            "include": "#punctuation"
+        }
+    ],
+    "repository": {
+        "comments": {
+            "patterns": [
+                {
+                    "name": "comment.line.double-slash.ritam",
+                    "match": "//.*$"
+                },
+                {
+                    "name": "comment.block.ritam",
+                    "begin": "/\\*",
+                    "end": "\\*/"
+                }
+            ]
+        },
+        "strings": {
+            "patterns": [
+                {
+                    "name": "string.quoted.double.ritam",
+                    "begin": "\"",
+                    "end": "\"",
+                    "patterns": [
+                        {
+                            "name": "constant.character.escape.ritam",
+                            "match": "\\\\."
+                        }
+                    ]
+                },
+                {
+                    "name": "string.quoted.single.ritam",
+                    "begin": "'",
+                    "end": "'",
+                    "patterns": [
+                        {
+                            "name": "constant.character.escape.ritam",
+                            "match": "\\\\."
+                        }
+                    ]
+                }
+            ]
+        },
+        "numbers": {
+            "patterns": [
+                {
+                    "name": "constant.numeric.ritam",
+                    "match": "\\b[0-9]+(\\.[0-9]+)?\\b"
+                }
+            ]
+        },
+        "keywords-tamil": {
+            "patterns": [
+                {
+                    "name": "keyword.control.ritam",
+                    "match": "\\b(எனில்|இல்லையேல்|இல்லையேல் ஆனால்|சுழற்சி|ஒவ்வொன்றாக|உள்ள|பொருத்து|முயற்சி|பிடி|எறி)\\b"
+                },
+                {
+                    "name": "keyword.declaration.ritam",
+                    "match": "\\b(மாறி|நிலையான|செயல்|கட்டமைப்பு|பட்டியல்|கூறு)\\b"
+                },
+                {
+                    "name": "keyword.other.ritam",
+                    "match": "\\b(திருப்பு|பதிவிடு|காண்பி|சுடுக்கு|பண்பு|இறக்குமதி|ஏற்றுமதி|இருந்து|ஒத்திசைவற்ற|காத்திரு)\\b"
+                },
+                {
+                    "name": "constant.language.ritam",
+                    "match": "\\b(மெய்|பொய்|வெற்று)\\b"
+                }
+            ]
+        },
+        "keywords-hindi": {
+            "patterns": [
+                {
+                    "name": "keyword.control.ritam",
+                    "match": "\\b(अगर|वरना|वरना_अगर|जबतक|हर|में|मिलाओ|प्रयास|पकड़े|फेंकना)\\b"
+                },
+                {
+                    "name": "keyword.declaration.ritam",
+                    "match": "\\b(चर|स्थिर|कार्य|संरचना|गणना|अंग)\\b"
+                },
+                {
+                    "name": "keyword.other.ritam",
+                    "match": "\\b(लौटाओ|छापो|प्रस्तुत|क्लिक|गुण|आयात|निर्यात|से|असमकालिक|प्रतीक्षा)\\b"
+                },
+                {
+                    "name": "constant.language.ritam",
+                    "match": "\\b(सत्य|असत्य|शून्य)\\b"
+                }
+            ]
+        },
+        "keywords-telugu": {
+            "patterns": [
+                {
+                    "name": "keyword.control.ritam",
+                    "match": "\\b(ఒకవేళ|లేకపోతే|అయ్యేవరకు|ప్రతి|లో|సరిపోల్చు)\\b"
+                },
+                {
+                    "name": "keyword.declaration.ritam",
+                    "match": "\\b(చరరాశి|స్థిరం|పనితీరు|నిర్మాణం|లెక్కింపు|భాగం)\\b"
+                },
+                {
+                    "name": "keyword.other.ritam",
+                    "match": "\\b(తిరిగివ్వు|ముద్రించు|ప్రదర్శించు|క్లిక్)\\b"
+                },
+                {
+                    "name": "constant.language.ritam",
+                    "match": "\\b(నిజం|తప్పు|శూన్యం)\\b"
+                }
+            ]
+        },
+        "keywords-kannada": {
+            "patterns": [
+                {
+                    "name": "keyword.control.ritam",
+                    "match": "\\b(ಆದರೆ|ಇಲ್ಲದಿದ್ದರೆ|ವರೆಗೆ|ಪ್ರತಿ|ಒಳಗೆ|ಹೊಂದಿಸು)\\b"
+                },
+                {
+                    "name": "keyword.declaration.ritam",
+                    "match": "\\b(ಅಸ್ಥಿರ|ಸ್ಥಿರ|ಕಾರ್ಯ|ರಚನೆ|ಎಣಿಕೆ|ಘಟಕ)\\b"
+                },
+                {
+                    "name": "keyword.other.ritam",
+                    "match": "\\b(ಹಿಂತಿರುಗಿಸು|ಮುದ್ರಿಸು|ಪ್ರದರ್ಶಿಸು|ಕ್ಲಿಕ್)\\b"
+                },
+                {
+                    "name": "constant.language.ritam",
+                    "match": "\\b(ನಿಜ|ಸುಳ್ಳು|ಶೂನ್ಯ)\\b"
+                }
+            ]
+        },
+        "keywords-malayalam": {
+            "patterns": [
+                {
+                    "name": "keyword.control.ritam",
+                    "match": "\\b(എങ്കിൽ|അല്ലെങ്കിൽ|ആകുമ്പോൾ|ഓരോ|ഉള്ളിൽ|പൊരൂത്തപ്പെടൂത്തുക)\\b"
+                },
+                {
+                    "name": "keyword.declaration.ritam",
+                    "match": "\\b(ചരം|സ്ഥിരം|ഫങ്ഷൻ|ഘടന|എണ്ണൽ|ഘടകം)\\b"
+                },
+                {
+                    "name": "keyword.other.ritam",
+                    "match": "\\b(തിരികെ|അച്ചടിക്കുക|പ്രദർശിപ്പിക്കുക|ക്ലിക്ക്)\\b"
+                },
+                {
+                    "name": "constant.language.ritam",
+                    "match": "\\b(ശരി|തെറ്റ്|ശൂന്യം)\\b"
+                }
+            ]
+        },
+        "keywords-spanish": {
+            "patterns": [
+                {
+                    "name": "keyword.control.ritam",
+                    "match": "\\b(si|sino|mientras|para|en|coincidir|intentar|atrapar|lanzar)\\b"
+                },
+                {
+                    "name": "keyword.declaration.ritam",
+                    "match": "\\b(variable|constante|funcion|estructura|enumeracion|componente)\\b"
+                },
+                {
+                    "name": "keyword.other.ritam",
+                    "match": "\\b(retornar|imprimir|renderizar|clic|atributo|importar|exportar|desde|asincrono|esperar)\\b"
+                },
+                {
+                    "name": "constant.language.ritam",
+                    "match": "\\b(verdadero|falso|nulo)\\b"
+                }
+            ]
+        },
+        "keywords-english": {
+            "patterns": [
+                {
+                    "name": "keyword.control.ritam",
+                    "match": "\\b(if|else|else_if|while|for|in|match|try|catch|throw)\\b"
+                },
+                {
+                    "name": "keyword.declaration.ritam",
+                    "match": "\\b(var|const|function|struct|enum|component)\\b"
+                },
+                {
+                    "name": "keyword.other.ritam",
+                    "match": "\\b(return|print|render|click|attr|import|export|from|async|await)\\b"
+                },
+                {
+                    "name": "constant.language.ritam",
+                    "match": "\\b(true|false|null)\\b"
+                }
+            ]
+        },
+        "sovereign": {
+            "patterns": [
+                {
+                    "name": "entity.name.function.sovereign.ritam",
+                    "match": "#[a-zA-Z_][a-zA-Z0-9_.]*"
+                },
+                {
+                    "name": "entity.name.function.sovereign.ritam",
+                    "match": "#[\\u0B80-\\u0BFF\\u0900-\\u097F\\u0C00-\\u0C7F\\u0C80-\\u0CFF\\u0D00-\\u0D7F][\\u0B80-\\u0BFF\\u0900-\\u097F\\u0C00-\\u0C7F\\u0C80-\\u0CFF\\u0D00-\\u0D7F_.]*"
+                }
+            ]
+        },
+        "operators": {
+            "patterns": [
+                {
+                    "name": "keyword.operator.ritam",
+                    "match": "(==|!=|<=|>=|<|>|&&|\\|\\||!|\\+|-|\\*|/|%|=)"
+                }
+            ]
+        },
+        "punctuation": {
+            "patterns": [
+                {
+                    "name": "punctuation.definition.ritam",
+                    "match": "[{}\\[\\]();,.]"
+                }
+            ]
+        }
+    }
+}

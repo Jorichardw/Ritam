@@ -6,9 +6,13 @@ dist/
 
 # Generated Code in examples
 examples/*.js
+examples/*.swift
+
+# Generated JS files (except source)
 *.js
 !jest.config.js
 !src/**/*.js
+!web-demo/*.js
 
 # Logs
 *.log
@@ -32,3 +36,4 @@ Thumbs.db
 coverage/
 .tmp_run.js
 tests/.tmp_run.js
+examples/.tmp_run.js

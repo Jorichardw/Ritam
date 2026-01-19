@@ -1,13 +1,18 @@
 # Ritam Programming Language
 
+[![Build Status](https://github.com/RichardWilliyam/ritam/actions/workflows/ci.yml/badge.svg)](https://github.com/RichardWilliyam/ritam/actions)
+[![npm version](https://img.shields.io/npm/v/ritam.svg)](https://www.npmjs.com/package/ritam)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Downloads](https://img.shields.io/npm/dm/ritam.svg)](https://www.npmjs.com/package/ritam)
+
 Ritam is a universal, full-stack, cross-platform web development language designed to let developers code entirely in their native human language.
 
-## � Why Ritam?
+## 🚀 Why Ritam?
 - **Native-First Sovereignty**: Code directly in your thought language. Ritam is not a translation layer; it is a native-language compiler.
 - **Universal Reach**: Build for Web, Backend, and Mobile from a single sovereign source.
 - **Security by Design**: Explicit `#std` prefixing ensures system-level operations are always visible and secure.
 
-## �🌍 Supported Languages
+## 🌏 Supported Languages
 
 | Language | Flag | Status |
 |----------|------|--------|
@@ -23,6 +28,7 @@ Ritam is a universal, full-stack, cross-platform web development language design
 ## Key Features
 
 - **Native Language Support**: Code in Tamil, Hindi, Telugu, Kannada, Malayalam, and Spanish.
+- **100% Script Purity**: Not a single English letter is required in the source code (Sovereign mode).
 - **Multi-Target Compilation**: Transpiles Ritam source code into high-performance JavaScript (Node.js/Web), Swift (iOS), and JSX (React Native).
 - **Modern Syntax**:
   - Structs & Enums (`கட்டமைப்பு`, `பட்டியல்` / `संरचना`, `गणना`)
@@ -31,6 +37,22 @@ Ritam is a universal, full-stack, cross-platform web development language design
   - Functions & Components
 - **Sovereign Standard Library**: Secure `#std` library with built-in math, string, list, and file operations.
 - **Minimal Language Philosophy**: A clean, keyword-minimal core that prioritizes developer intent over syntax boilerplate.
+- **Sovereign Mapping**: Internal 1:1 mapping between native descriptors and universal symbols.
+
+## 💎 100% Script Purity
+
+Ritam is arguably the only programming language that allows for **100% script purity**. Not a single English letter is required in your source code (excluding standard punctuation).
+
+**Example (100% Tamil):**
+```ritam
+செயல் வணக்கம்() {
+    பதிவிடு "வணக்கம் உலகம்!"
+    மாறி சோதனை = மெய்
+    எனில் (சோதனை) {
+        #அடித்தளம்.பதிவிடு("இது ஒரு சோதனை.")
+    }
+}
+```
 
 ## Installation
 
