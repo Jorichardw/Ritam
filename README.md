@@ -1,140 +1,134 @@
-# Ritam Programming Language
+🔥 Ritam — Native-Language Programming Language
 
-[![Build Status](https://github.com/RichardWilliyam/ritam/actions/workflows/ci.yml/badge.svg)](https://github.com/RichardWilliyam/ritam/actions)
-[![npm version](https://img.shields.io/npm/v/ritam.svg)](https://www.npmjs.com/package/ritam)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Downloads](https://img.shields.io/npm/dm/ritam.svg)](https://www.npmjs.com/package/ritam)
+Program in your own language. Build for the real world.
 
-Ritam is a universal, full-stack, cross-platform web development language designed to let developers code entirely in their native human language.
+Ritam is a universal, full-stack, cross-platform programming language that allows developers to write software entirely in their native human language.
+It is designed for sovereignty, clarity, and serious production use across web, backend, and mobile platforms.
 
-## 🚀 Why Ritam?
-- **Native-First Sovereignty**: Code directly in your thought language. Ritam is not a translation layer; it is a native-language compiler.
-- **Universal Reach**: Build for Web, Backend, and Mobile from a single sovereign source.
-- **Security by Design**: Explicit `#std` prefixing ensures system-level operations are always visible and secure.
+Ritam is not a translation layer — it is a native-language compiler.
 
-## 🌏 Supported Languages
+✨ Why Ritam?
 
-| Language | Flag | Status |
-|----------|------|--------|
-| Tamil (தமிழ்) | 🇮🇳 | ✅ Production |
-| Hindi (हिंदी) | 🇮🇳 | ✅ Production |
-| Telugu (తెలుగు) | 🇮🇳 | ✅ Production |
-| Kannada (ಕನ್ನಡ) | 🇮🇳 | ✅ Production |
-| Malayalam (മലയാളം) | 🇮🇳 | ✅ Production |
-| Spanish (Español) | 🇪🇸 | ✅ Production |
+🌍 Write code in your own language (Tamil, Hindi, Telugu, Kannada, Malayalam, Spanish)
+🧠 Think natively — no forced English keywords
+🛡️ Security-first design with explicit #std access
+⚡ Single source, multiple targets
+🧩 Modern language constructs (structs, enums, pattern matching)
+🎓 Ideal for education, governance, and inclusive computing
+🚀 Built for long-term production and sovereignty
 
-> **Note:** All listed languages support core syntax and native error messages. Advanced features (mobile targets, pattern matching depth, `#std` coverage) may vary slightly by language during the current stable release phase.
-
-## Key Features
-
-- **Native Language Support**: Code in Tamil, Hindi, Telugu, Kannada, Malayalam, and Spanish.
-- **100% Script Purity**: Not a single English letter is required in the source code (Sovereign mode).
-- **Multi-Target Compilation**: Transpiles Ritam source code into high-performance JavaScript (Node.js/Web), Swift (iOS), and JSX (React Native).
-- **Modern Syntax**:
-  - Structs & Enums (`கட்டமைப்பு`, `பட்டியல்` / `संरचना`, `गणना`)
-  - Pattern Matching (`பொருத்து` / `मिलाओ`)
-  - Loops (`சுழற்சி` / `जबतक`)
-  - Functions & Components
-- **Sovereign Standard Library**: Secure `#std` library with built-in math, string, list, and file operations.
-- **Minimal Language Philosophy**: A clean, keyword-minimal core that prioritizes developer intent over syntax boilerplate.
-- **Sovereign Mapping**: Internal 1:1 mapping between native descriptors and universal symbols.
-
-## 💎 100% Script Purity
-
-Ritam is arguably the only programming language that allows for **100% script purity**. Not a single English letter is required in your source code (excluding standard punctuation).
-
-**Example (100% Tamil):**
-```ritam
+🚀 Quick Example (100% Native Script)
+Tamil (100% Script Purity)
 செயல் வணக்கம்() {
     பதிவிடு "வணக்கம் உலகம்!"
-    மாறி சோதனை = மெய்
-    எனில் (சோதனை) {
-        #அடித்தளம்.பதிவிடு("இது ஒரு சோதனை.")
-    }
 }
-```
 
-## Installation
 
-```bash
+Output
+
+வணக்கம் உலகம்!
+
+
+No English keywords. No transliteration. Pure native code.
+
+🧩 Language Basics
+Variables & Constants
+மாறி பெயர் = "ரிதம்"
+மாறி வயது = 10
+
+Conditionals
+எனில் (வயது >= 10) {
+    பதிவிடு "பயனர் தகுதியானவர்"
+} இல்லை {
+    பதிவிடு "தகுதி இல்லை"
+}
+
+Loops
+சுழற்சி (மாறி i = 1; i <= 5; i = i + 1) {
+    பதிவிடு i
+}
+
+Functions
+செயல் வணக்கம்(பெயர்) {
+    திருப்பு "வணக்கம், " + பெயர்
+}
+
+🌏 Supported Languages
+Language	Script	Status
+Tamil	தமிழ்	✅ Production
+Hindi	हिंदी	✅ Production
+Telugu	తెలుగు	✅ Production
+Kannada	ಕನ್ನಡ	✅ Production
+Malayalam	മലയാളം	✅ Production
+Spanish	Español	✅ Production
+
+All supported languages include native keywords, native error messages, and native syntax parity.
+
+🧠 Core Language Keywords
+Native	Concept
+செயல் / अंग	Function
+மாறி / चर	Variable
+எனில் / अगर	Conditional
+இல்லை / अन्यथा	Else
+சுழற்சி / जबतक	Loop
+திருப்பு / वापस	Return
+மெய் / பொய்	Boolean
+பொருத்து	Pattern Matching
+🧠 Advanced Features
+Feature	Description
+கட்டமைப்பு / संरचना	Structs
+பட்டியல் / गणना	Enums
+பொருத்து	Pattern Matching
+#std Library	Explicit system access
+Sovereign Mapping	1:1 internal symbol mapping
+🛡️ Sovereign Standard Library (#std)
+
+Ritam enforces explicit privilege access:
+
+#அடித்தளம்.பதிவிடு("பாதுகாப்பான வெளியீடு")
+
+
+No hidden IO. No silent system calls.
+
+🖥️ Installation
 npm install -g ritam
 
-# Verify installation
+
+Verify:
+
 ritam --version
-```
 
-## Quick Start
-
-```bash
-# Initialize a new project
+⚙️ CLI Usage
 ritam init
-
-# Compile your code
 ritam compile main.rvx -t node
-```
+ritam run main.rvx
+ritam repl
 
-## Language Support
+🎯 Compilation Targets
+Target	Output	Status
+Web	.js	✅ Production
+Node.js	.js	✅ Production
+React Native	.jsx	🧪 Alpha
+Mobile (Swift)	.swift	🧪 Alpha
+🖥️ Native Error Messages
 
-Ritam handles keywords, console output, and **Error Messages** in the native language.
+Errors always appear in the same language as your source code.
 
-**Example Error (Tamil):**
-```
-'=' எதிர்பார்க்கப்பட்டது ஆனால் 'EOF' கிடைத்தது (வரி 2)
-```
+Example (Tamil):
 
-## Compilation Targets
+'=' எதிர்பார்க்கப்பட்டது ஆனால் 'EOF' கிடைத்தது
 
-| Target | Command | Status | Output |
-|--------|---------|--------|--------|
-| Web/Browser | `ritam compile app.rvx -t web` | ✅ Production | `.js` |
-| Node.js | `ritam compile app.rvx -t node` | ✅ Production | `.js` |
-| Mobile (Swift) | `ritam compile app.rvx -t mobile` | 🧪 Alpha | `.swift` |
-| React Native | `ritam compile app.rvx -t react-native` | 🧪 Alpha | `.jsx` |
+📘 Documentation
 
-## Example Code
+docs/QUICKSTART.md — Getting Started
 
-### Tamil (தமிழ்)
-```ritam
-கூறு முதன்மை {
-  காண்பி "h1" "வணக்கம் உலகம்"
-}
-```
+docs/LANGUAGES.md — Keyword reference
 
-### Hindi (हिंदी)
-```ritam
-अंग मुख्य {
-  प्रस्तुत "h1" "नमस्ते दुनिया"
-}
-```
+docs/ROADMAP.md — Future plans
 
-### Telugu (తెలుగు)
-```ritam
-అంగం ప్రధాన {
-  ప్రదర్శించు "h1" "నమస్కారం ప్రపంచం"
-}
-```
+🤝 Contributing
 
-## Stability Guarantees
+Ritam is open-source and community-driven.
+Contributions, issues, language extensions, and ideas are welcome.
 
-Ritam is currently in **Version 0.1.x**. While the core syntax for Tamil and Hindi is stable, the Standard Library (#std) and Mobile targets are undergoing active development. We guarantee:
-- **Zero-Dependency Core**: The compiler remains lightweight and portable.
-- **Native Error Parity**: Errors will always match the language of the source code.
-- **Sovereign Isolation**: All privileged system and IO operations require explicit `#std` or `#`-prefixed access.
-
-## Documentation
-
-- [docs/LANGUAGES.md](docs/LANGUAGES.md) — Full keyword reference for all languages
-- [docs/QUICKSTART.md](docs/QUICKSTART.md) — Getting started guide
-- [docs/ROADMAP.md](docs/ROADMAP.md) — Planned language support
-
-## License
-
-MIT © The Ritam Project
-
----
-
-*Ritam — Programming in Your Own Language* 🇮🇳
-
-*ரிதம் — உங்கள் சொந்த மொழியில் நிரலாக்கம்*
-
-*रितम — आपकी अपनी भाषा में प्रोग्रामिंग
+If you believe programming should belong to everyone, Ritam is for you.
