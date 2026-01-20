@@ -17,14 +17,14 @@ Ritam is not a translation layer — it is a native-language compiler.
 🎓 Ideal for education, governance, and inclusive computing
 🚀 Built for long-term production and sovereignty
 
-🚀 Quick Example (100% Native Script)
-Tamil (100% Script Purity)
+🚀 Quick Example
+Tamil 
 செயல் வணக்கம்() {
-    பதிவிடு "வணக்கம் உலகம்!"
+    பதிவிடு ("வணக்கம் உலகம்!");
 }
 
 
-Output
+Output:
 
 வணக்கம் உலகம்!
 
