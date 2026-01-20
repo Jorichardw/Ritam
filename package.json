@@ -1,6 +1,6 @@
 {
   "name": "ritam",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "A universal, native-language functional programming language for the web",
   "main": "dist/tooling/cli/index.js",
   "bin": {
