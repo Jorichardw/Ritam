@@ -15,7 +15,7 @@ const langManager = new LanguageManager();
 program
     .name('ritam')
     .description('Ritam Sovereign Programming Language CLI')
-    .version('0.2.2');
+    .version('0.2.3');
 
 program
     .command('init')
@@ -49,7 +49,7 @@ program
             language: answers.language,
             main: "main.rvx",
             dependencies: {},
-            ritam_version: "0.2.1"
+            ritam_version: "0.2.3"
         };
 
         fs.writeFileSync(
@@ -94,7 +94,7 @@ program
             try {
                 const output = compiler.compile(content, options.target as any, file);
                 let ext = '.js';
-                if (options.target === 'mobile') ext = '.swift';
+                if (options.target === 'mobile') ext = '.dart';
                 const outFile = file.replace(/\.rvx$/, '') + ext;
                 fs.writeFileSync(outFile, output);
                 console.log(`Successfully compiled to ${outFile}`);

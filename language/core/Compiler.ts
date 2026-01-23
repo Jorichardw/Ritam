@@ -3,7 +3,7 @@ import { Tokenizer } from './Tokenizer';
 import { Parser } from './Parser';
 import { TargetGenerator } from '../generators/TargetGenerator';
 import { WebGenerator } from '../generators/WebGenerator';
-import { MobileGenerator } from '../generators/MobileGenerator';
+import { FlutterGenerator } from '../generators/FlutterGenerator';
 import { NodeGenerator } from '../generators/NodeGenerator';
 import { ReactNativeGenerator } from '../generators/ReactNativeGenerator';
 import { ErrorManager } from './ErrorManager';
@@ -32,7 +32,7 @@ export class RitamCompiler {
         let generator: TargetGenerator;
         switch (target) {
             case 'mobile':
-                generator = new MobileGenerator(); // Swift
+                generator = new FlutterGenerator(); // Flutter/Dart
                 break;
             case 'node':
                 generator = new NodeGenerator(this.langManager.getCurrentDefinition()); // Backend

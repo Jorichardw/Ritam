@@ -1,0 +1,69 @@
+// ═══════════════════════════════════════════════════════════════════════════
+// English Keywords Unit Test Suite
+// Language: English
+// ═══════════════════════════════════════════════════════════════════════════
+
+// 1. Variable Declaration
+func testVariables() {
+    var x = 10
+    const y = 20
+    #std.test.assert(x == 10, "Variable x failed")
+    #std.test.assert(y == 20, "Constant y failed")
+}
+
+// 2. Control Flow
+func testControlFlow() {
+    var value = 15
+    var result = ""
+    
+    if value < 10 {
+        result = "small"
+    } else if value < 20 {
+        result = "medium"
+    } else {
+        result = "large"
+    }
+    
+    #std.test.assert(result == "medium", "Control flow failed")
+}
+
+// 3. Logic & Loops
+func testLoops() {
+    var sum = 0
+    var i = 0
+    while i < 5 {
+        sum = sum + i
+        i = i + 1
+    }
+    #std.test.assert(sum == 10, "Loop failed")
+}
+
+// 4. Pattern Matching
+func testMatch() {
+    var val = 1
+    var output = ""
+    match val {
+        1 { output = "one" }
+        2 { output = "two" }
+    }
+    #std.test.assert(output == "one", "Match failed")
+}
+
+// 5. Async/Await
+async func testAsync() {
+    async func getVal() { return 42 }
+    var v = await getVal()
+    #std.test.assert(v == 42, "Async failed")
+}
+
+// Runner
+async func runTests() {
+    await #std.test.describe("Variables", testVariables)
+    await #std.test.describe("Control Flow", testControlFlow)
+    await #std.test.describe("Loops", testLoops)
+    await #std.test.describe("Match", testMatch)
+    await #std.test.describe("Async", testAsync)
+}
+
+await runTests()
+#std.print("✅ All English Tests Completed")

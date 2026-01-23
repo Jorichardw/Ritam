@@ -1,0 +1,29 @@
+// Tailwind CSS Demo in Ritam
+// compile with: ritam compile examples/tailwind_demo.rvx -t web --lang Tamil
+
+மாறி வண்ணம் = "bg-accent-primary"
+
+கூறு முதன்மை {
+    காண்பி "div" {
+        பண்பு "class" "p-10 min-h-screen bg-bg-primary flex items-center justify-center"
+        
+        காண்பி "div" {
+            பண்பு "class" "p-8 bg-bg-card rounded-3xl border border-white/10 shadow-2xl text-center space-y-6"
+            
+            காண்பி "h1" {
+                பண்பு "class" "text-4xl font-black bg-gradient-to-r from-accent-primary to-accent-tertiary bg-clip-text text-transparent"
+                "Ritam + Tailwind"
+            }
+            
+            காண்பி "p" {
+                பண்பு "class" "text-white/50"
+                "This app is styled entirely using Tailwind CSS classes inside Ritam code."
+            }
+            
+            காண்பி "button" {
+                பண்பு "class" "px-6 py-2 bg-accent-primary rounded-xl font-bold hover:scale-105 transition-transform"
+                "Click Me"
+            }
+        }
+    }
+}

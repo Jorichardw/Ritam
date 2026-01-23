@@ -1,0 +1,69 @@
+// ═══════════════════════════════════════════════════════════════════════════
+// Tamil Keywords Unit Test Suite
+// Language: Tamil (தமிழ்)
+// ═══════════════════════════════════════════════════════════════════════════
+
+// 1. Variable Declaration
+செயல் testVariables() {
+    மாறி x = 10
+    நிலையான y = 20
+    #std.test.assert(x == 10, "Variable x failed")
+    #std.test.assert(y == 20, "Constant y failed")
+}
+
+// 2. Control Flow
+செயல் testControlFlow() {
+    மாறி value = 15
+    மாறி result = ""
+    
+    எனில் value < 10 {
+        result = "small"
+    } இல்லையேல் ஆனால் value < 20 {
+        result = "medium"
+    } இல்லையேல் {
+        result = "large"
+    }
+    
+    #std.test.assert(result == "medium", "Control flow failed")
+}
+
+// 3. Logic & Loops
+செயல் testLoops() {
+    மாறி sum = 0
+    மாறி i = 0
+    சுழற்சி i < 5 {
+        sum = sum + i
+        i = i + 1
+    }
+    #std.test.assert(sum == 10, "Loop failed")
+}
+
+// 4. Pattern Matching
+செயல் testMatch() {
+    மாறி val = 1
+    மாறி output = ""
+    பொருத்து val {
+        1 { output = "one" }
+        2 { output = "two" }
+    }
+    #std.test.assert(output == "one", "Match failed")
+}
+
+// 5. Async/Await
+ஒத்திசைவற்ற செயல் testAsync() {
+    ஒத்திசைவற்ற செயல் getVal() { திருப்பு 42 }
+    மாறி v = காத்திரு getVal()
+    #std.test.assert(v == 42, "Async failed")
+}
+
+// Runner
+ஒத்திசைவற்ற செயல் runTests() {
+    காத்திரு #std.test.describe("Variables", testVariables)
+    காத்திரு #std.test.describe("Control Flow", testControlFlow)
+    காத்திரு #std.test.describe("Loops", testLoops)
+    காத்திரு #std.test.describe("Match", testMatch)
+    காத்திரு #std.test.describe("Async", testAsync)
+}
+
+காத்திரு runTests()
+#std.print("✅ All Tamil Tests Completed")

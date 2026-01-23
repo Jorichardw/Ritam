@@ -4,7 +4,8 @@ import {
     UIView, Expression, Literal, Identifier, FunctionDeclaration, StructDeclaration,
     EnumDeclaration, IfStatement, WhileStatement, MatchExpression, AssignmentStatement, CallExpression,
     ForStatement, ReturnStatement, ArrayLiteral, ImportDeclaration, ExportDeclaration, Exportable,
-    TryCatchStatement, ThrowStatement, AwaitExpression, MemberExpression, AttributeStatement
+    TryCatchStatement, ThrowStatement, AwaitExpression, MemberExpression, AttributeStatement,
+    UnaryExpression
 } from '../core/AST';
 import { ErrorManager } from './ErrorManager';
 
@@ -21,6 +22,7 @@ export class Parser {
     public parse(): Program {
         const startToken = this.peek();
         const body: ASTNode[] = [];
+        console.log("DEBUG TOKENS:", this.tokens.length);
         while (!this.isAtEnd()) {
             body.push(this.statement());
         }
@@ -41,7 +43,8 @@ export class Parser {
             if (token.universalValue === 'var' || token.universalValue === 'const') return this.varDeclaration();
             if (token.universalValue === 'print') return this.printStatement();
             if (token.universalValue === 'component') return this.componentDeclaration();
-            if (token.universalValue === 'render') return this.renderStatement();
+            if (token.universalValue === 'render' || token.universalValue === 'tag') return this.renderStatement();
+            if (token.universalValue === 'text') return this.textStatement();
             if (token.universalValue === 'function' || token.universalValue === 'async') return this.functionDeclaration();
             if (token.universalValue === 'struct') return this.structDeclaration();
             if (token.universalValue === 'enum') return this.enumDeclaration();
@@ -105,7 +108,11 @@ export class Parser {
             this.advance();
             isAsync = true;
         }
-        this.consume(TokenType.Keyword, "function");
+        if (this.peek().universalValue === 'function') {
+            this.advance();
+        } else {
+            this.consume(TokenType.Keyword, "Expected 'function' keyword");
+        }
         const nameToken = this.consume(TokenType.Identifier, "Expected Name");
 
         let typeParameters: any[] | undefined;
@@ -323,7 +330,11 @@ export class Parser {
         }
         this.consume(TokenType.Punctuation, "}");
 
-        this.consume(TokenType.Keyword, "catch");
+        if (this.peek().universalValue === 'catch') {
+            this.advance();
+        } else {
+            this.consume(TokenType.Keyword, "Expected 'catch' keyword");
+        }
         this.consume(TokenType.Punctuation, "(");
         const errorVar = this.consume(TokenType.Identifier, "Expected error variable name").value;
         this.consume(TokenType.Punctuation, ")");
@@ -372,30 +383,50 @@ export class Parser {
         return this.attachLoc({ type: 'AttributeStatement', name: nameToken.value, value } as any, start, this.previous());
     }
 
+    private textStatement(): ASTNode {
+        const start = this.peek();
+        this.advance(); // text
+        const value = this.expression();
+        return this.attachLoc({ type: 'AttributeStatement', name: 'text', value } as any, start, this.previous());
+    }
+
     private renderStatement(): UIView {
         const start = this.peek();
-        this.advance(); // render
-        const tagToken = this.consume(TokenType.String, "Expected tag");
-        const tag = tagToken.value;
+        this.advance(); // render or tag
+
+        let tag = "div";
+        if (this.check(TokenType.String)) {
+            tag = this.advance().value;
+        }
 
         let type: UIView['componentType'] = 'Container';
-        if (['h1', 'p', 'span', 'text'].includes(tag)) type = 'Text';
-        if (['button'].includes(tag)) type = 'Button';
-        if (['input'].includes(tag)) type = 'Input';
+        if (['h1', 'p', 'span', 'text', 'Text'].includes(tag)) type = 'Text';
+        if (['button', 'Button'].includes(tag)) type = 'Button';
+        if (['input', 'Input', 'TextField'].includes(tag)) type = 'Input';
+        if (['VStack', 'HStack', 'Column', 'Row'].includes(tag)) type = 'Container';
 
         let props: Record<string, Expression> = {};
+        const children: ASTNode[] = [];
 
-        // 1. Content (Expression) - only if next is not {
+        // 1. Optional shorthand content: render "h1" "Hello"
         if (!this.check(TokenType.Punctuation, '{')) {
             props['text'] = this.expression();
         }
 
-        const children: ASTNode[] = [];
-        // 2. Nested Children Block { ... }
+        // 2. Nested Block { ... }
         if (this.check(TokenType.Punctuation, '{')) {
             this.advance(); // consume {
             while (!this.check(TokenType.Punctuation, '}') && !this.isAtEnd()) {
-                children.push(this.statement());
+                const child = this.statement();
+                if (child.type === 'AttributeStatement') {
+                    const attr = child as any;
+                    props[attr.name] = attr.value;
+                } else if (child.type === 'EventStatement') {
+                    const ev = child as any;
+                    props[ev.eventName.replace('on', '')] = { type: 'Expression', kind: 'Identifier', name: ev.action } as any;
+                } else {
+                    children.push(child);
+                }
             }
             this.consume(TokenType.Punctuation, '}');
         }
@@ -411,7 +442,27 @@ export class Parser {
 
     // Expression Parsing (Recursive Descent)
     private expression(): Expression {
-        return this.equality();
+        return this.logicalOr();
+    }
+
+    private logicalOr(): Expression {
+        let expr = this.logicalAnd();
+        while (this.match(TokenType.Operator, '||')) {
+            const operator = this.previous().value;
+            const right = this.logicalAnd();
+            expr = { type: 'Expression', kind: 'Binary', left: expr, operator, right };
+        }
+        return expr;
+    }
+
+    private logicalAnd(): Expression {
+        let expr = this.equality();
+        while (this.match(TokenType.Operator, '&&')) {
+            const operator = this.previous().value;
+            const right = this.equality();
+            expr = { type: 'Expression', kind: 'Binary', left: expr, operator, right };
+        }
+        return expr;
     }
 
     private equality(): Expression {
@@ -445,13 +496,23 @@ export class Parser {
     }
 
     private factor(): Expression {
-        let expr = this.primary();
+        let expr = this.unary();
         while (this.match(TokenType.Operator, '/', '*')) {
             const operator = this.previous().value;
-            const right = this.primary();
+            const right = this.unary();
             expr = { type: 'Expression', kind: 'Binary', left: expr, operator, right };
         }
         return expr;
+    }
+
+    private unary(): Expression {
+        if (this.match(TokenType.Operator, '-', '!')) {
+            const operator = this.previous().value;
+            const start = this.previous();
+            const right = this.unary();
+            return this.attachLoc({ type: 'Expression', kind: 'Unary', operator, right } as UnaryExpression, start, this.previous());
+        }
+        return this.primary();
     }
 
     private primary(): Expression {

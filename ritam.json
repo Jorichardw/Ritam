@@ -1,8 +1,8 @@
 {
     "name": "ritam",
-    "version": "0.2.2",
+    "version": "0.2.3",
     "language": "Tamil",
     "main": "index.rvx",
     "dependencies": {},
-    "ritam_version": "0.2.2"
+    "ritam_version": "0.2.3"
 }

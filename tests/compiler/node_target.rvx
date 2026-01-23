@@ -1,0 +1,14 @@
+// Safe Node Test
+func test1() {
+    var x = 1
+    #std.test.assert(x == 1, "Fail")
+}
+#std.test.describe("Node1", test1)
+
+func test2() {
+    var y = 2
+    #std.test.assert(y == 2, "Fail 2")
+}
+#std.test.describe("Node2", test2)
+
+#std.print("✅ Node Success")

@@ -1,0 +1,69 @@
+// ═══════════════════════════════════════════════════════════════════════════
+// Telugu Keywords Unit Test Suite
+// Language: Telugu (తెలుగు)
+// ═══════════════════════════════════════════════════════════════════════════
+
+// 1. Variable Declaration
+పనితీరు testVariables() {
+    చరరాశి x = 10
+    స్థిరం y = 20
+    #std.test.assert(x == 10, "Variable x failed")
+    #std.test.assert(y == 20, "Constant y failed")
+}
+
+// 2. Control Flow
+పనితీరు testControlFlow() {
+    చరరాశి value = 15
+    చరరాశి result = ""
+    
+    ఒకవేళ value < 10 {
+        result = "small"
+    } లేకపోతే_ఒకవేళ value < 20 {
+        result = "medium"
+    } లేకపోతే {
+        result = "large"
+    }
+    
+    #std.test.assert(result == "medium", "Control flow failed")
+}
+
+// 3. Logic & Loops
+పనితీరు testLoops() {
+    చరరాశి sum = 0
+    చరరాశి i = 0
+    అయ్యేవరకు i < 5 {
+        sum = sum + i
+        i = i + 1
+    }
+    #std.test.assert(sum == 10, "Loop failed")
+}
+
+// 4. Pattern Matching
+పనితీరు testMatch() {
+    చరరాశి val = 1
+    చరరాశి output = ""
+    సరిపోల్చు val {
+        1 { output = "one" }
+        2 { output = "two" }
+    }
+    #std.test.assert(output == "one", "Match failed")
+}
+
+// 5. Async/Await
+అసమకాలిక పనితీరు testAsync() {
+    అసమకాలిక పనితీరు getVal() { తిరిగివ్వు 42 }
+    చరరాశి v = వేచివుండు getVal()
+    #std.test.assert(v == 42, "Async failed")
+}
+
+// Runner
+అసమకాలిక పనితీరు runTests() {
+    వేచివుండు #std.test.describe("Variables", testVariables)
+    వేచివుండు #std.test.describe("Control Flow", testControlFlow)
+    వేచివుండు #std.test.describe("Loops", testLoops)
+    వేచివుండు #std.test.describe("Match", testMatch)
+    వేచివుండు #std.test.describe("Async", testAsync)
+}
+
+వేచివుండు runTests()
+#std.print("✅ All Telugu Tests Completed")

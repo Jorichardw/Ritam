@@ -4,7 +4,7 @@ import {
     EnumDeclaration, IfStatement, WhileStatement, MatchExpression, AssignmentStatement, CallExpression,
     ForStatement, ReturnStatement, ArrayLiteral, ImportDeclaration, ExportDeclaration,
     TryCatchStatement, ThrowStatement, AwaitExpression, VarDeclaration, ComponentDeclaration,
-    MemberExpression
+    MemberExpression, UnaryExpression
 } from '../core/AST';
 import { RitamRuntimeSource } from '../runtime/RitamRuntime';
 import { LanguageDef } from '../core/LanguageManager';
@@ -176,6 +176,10 @@ ${RitamRuntimeSource}
             const c = expr as CallExpression;
             const args = c.args.map(a => this.visitExpr(a)).join(', ');
             return `${this.visitExpr(c.callee)}(${args})`;
+        }
+        if (expr.kind === 'Unary') {
+            const u = expr as UnaryExpression;
+            return `(${u.operator}${this.visitExpr(u.right)})`;
         }
         if (expr.kind === 'Member') {
             const m = expr as MemberExpression;

@@ -41,6 +41,13 @@ ${RitamRuntimeSource}
 /* Initialize Runtime Localization */
 const _msgs = ${msgsJson};
 
+/* Tailwind Support */
+if (typeof document !== 'undefined') {
+    const s = document.createElement('script');
+    s.src = 'https://cdn.tailwindcss.com';
+    document.head.appendChild(s);
+}
+
 /* Generated App Code */
 try {
     _rt.pushFrame("web_root", "${filename}", ${ast.line || 1});

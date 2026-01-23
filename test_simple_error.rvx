@@ -1,0 +1,18 @@
+// Simple error test with function call
+செயல் mayThrow(shouldThrow) {
+    எனில் shouldThrow {
+        எறி "Function Error"
+    }
+    திருப்பு "Success"
+}
+
+செயல் main() {
+    மாறி caught = பொய்
+    முயற்சி {
+        mayThrow(மெய்)
+    } பிடி (e) {
+        caught = மெய்
+    }
+    #std.print("Caught: " + caught)
+}
+main()

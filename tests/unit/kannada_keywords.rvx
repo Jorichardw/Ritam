@@ -1,0 +1,69 @@
+// ═══════════════════════════════════════════════════════════════════════════
+// Kannada Keywords Unit Test Suite
+// Language: Kannada (ಕನ್ನಡ)
+// ═══════════════════════════════════════════════════════════════════════════
+
+// 1. Variable Declaration
+ಕಾರ್ಯ testVariables() {
+    ಅಸ್ಥಿರ x = 10
+    ಸ್ಥಿರ y = 20
+    #std.test.assert(x == 10, "Variable x failed")
+    #std.test.assert(y == 20, "Constant y failed")
+}
+
+// 2. Control Flow
+ಕಾರ್ಯ testControlFlow() {
+    ಅಸ್ಥಿರ value = 15
+    ಅಸ್ಥಿರ result = ""
+    
+    ಆದರೆ value < 10 {
+        result = "small"
+    } ಇಲ್ಲದಿದ್ದರೆ_ಆದರೆ value < 20 {
+        result = "medium"
+    } ಇಲ್ಲದಿದ್ದರೆ {
+        result = "large"
+    }
+    
+    #std.test.assert(result == "medium", "Control flow failed")
+}
+
+// 3. Logic & Loops
+ಕಾರ್ಯ testLoops() {
+    ಅಸ್ಥಿರ sum = 0
+    ಅಸ್ಥಿರ i = 0
+    ವರೆಗೆ i < 5 {
+        sum = sum + i
+        i = i + 1
+    }
+    #std.test.assert(sum == 10, "Loop failed")
+}
+
+// 4. Pattern Matching
+ಕಾರ್ಯ testMatch() {
+    ಅಸ್ಥಿರ val = 1
+    ಅಸ್ಥಿರ output = ""
+    ಹೊಂದಿಸು val {
+        1 { output = "one" }
+        2 { output = "two" }
+    }
+    #std.test.assert(output == "one", "Match failed")
+}
+
+// 5. Async/Await
+ಅಸಮಕಾಲಿಕ ಕಾರ್ಯ testAsync() {
+    ಅಸಮಕಾಲಿಕ ಕಾರ್ಯ getVal() { ಹಿಂತಿರುಗಿಸು 42 }
+    ಅಸ್ಥಿರ v = ಕಾಯು getVal()
+    #std.test.assert(v == 42, "Async failed")
+}
+
+// Runner
+ಅಸಮಕಾಲಿಕ ಕಾರ್ಯ runTests() {
+    ಕಾಯು #std.test.describe("Variables", testVariables)
+    ಕಾಯು #std.test.describe("Control Flow", testControlFlow)
+    ಕಾಯು #std.test.describe("Loops", testLoops)
+    ಕಾಯು #std.test.describe("Match", testMatch)
+    ಕಾಯು #std.test.describe("Async", testAsync)
+}
+
+ಕಾಯು runTests()
+#std.print("✅ All Kannada Tests Completed")

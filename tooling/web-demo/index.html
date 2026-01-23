@@ -1,215 +1,253 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Ritam - A universal, multilingual programming language for the web">
     <title>Ritam - Code in Your Language</title>
+    <!-- We keep the styles.css for Ritam-specific component styling if needed, but Tailwind handles the rest -->
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'bg-primary': '#0a0a0f',
+                        'bg-secondary': '#12121a',
+                        'bg-card': '#1a1a24',
+                        'bg-card-hover': '#22222e',
+                        'accent-primary': '#6366f1',
+                        'accent-secondary': '#8b5cf6',
+                        'accent-tertiary': '#ec4899',
+                    },
+                    backgroundImage: {
+                        'gradient-primary': 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%)',
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'sans-serif'],
+                        'mono': ['JetBrains Mono', 'monospace'],
+                    },
+                    animation: {
+                        'float': 'float 20s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translate(0, 0) scale(1)' },
+                            '25%': { transform: 'translate(30px, -30px) scale(1.05)' },
+                            '50%': { transform: 'translate(-20px, 20px) scale(0.95)' },
+                            '75%': { transform: 'translate(20px, 30px) scale(1.02)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
         rel="stylesheet">
+    <style>
+        /* Modern Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0a0a0f;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #1a1a24;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #22222e;
+        }
+    </style>
 </head>
 
-<body>
-    <div class="background-effects">
-        <div class="gradient-orb orb-1"></div>
-        <div class="gradient-orb orb-2"></div>
-        <div class="gradient-orb orb-3"></div>
+<body class="bg-bg-primary text-white font-sans antialiased overflow-x-hidden">
+    <!-- Background Gradient Effects -->
+    <div class="fixed inset-0 pointer-events-none z-[-1] overflow-hidden">
+        <div
+            class="absolute w-[600px] h-[600px] rounded-full bg-accent-primary/20 blur-[120px] top-[-200px] right-[-100px] animate-float">
+        </div>
+        <div class="absolute w-[500px] h-[500px] rounded-full bg-accent-secondary/15 blur-[120px] top-1/2 left-[-150px] animate-float opacity-70"
+            style="animation-delay: -7s;"></div>
+        <div class="absolute w-[400px] h-[400px] rounded-full bg-accent-tertiary/15 blur-[120px] bottom-[-100px] right-[20%] animate-float opacity-50"
+            style="animation-delay: -14s;"></div>
     </div>
 
-    <nav class="navbar">
-        <div class="nav-brand">
-            <span class="logo">ரி</span>
-            <span class="brand-text">Ritam</span>
+    <!-- Navigation -->
+    <nav
+        class="fixed top-0 left-0 right-0 z-50 px-8 py-4 flex items-center justify-between bg-bg-primary/80 backdrop-blur-xl border-b border-white/10">
+        <div class="flex items-center gap-3 text-xl font-bold tracking-tight">
+            <div
+                class="w-10 h-10 bg-gradient-primary rounded-xl flex items-center justify-center text-xl shadow-lg shadow-accent-primary/20">
+                ரி</div>
+            <span class="bg-gradient-to-r from-white to-white/60 bg-clip-text text-transparent">Ritam</span>
         </div>
-        <div class="nav-links">
-            <a href="#features">Features</a>
-            <a href="#languages">Languages</a>
-            <a href="#demo">Try It</a>
-            <a href="https://github.com/RichardWilliyam/ritam" class="btn-github">
+        <div class="hidden md:flex items-center gap-10">
+            <a href="#features" class="text-sm font-medium text-white/50 hover:text-white transition-all">Features</a>
+            <a href="#languages" class="text-sm font-medium text-white/50 hover:text-white transition-all">Languages</a>
+            <a href="#demo" class="text-sm font-medium text-white/50 hover:text-white transition-all">Playground</a>
+            <a href="https://github.com/RichardWilliyam/ritam"
+                class="flex items-center gap-2.5 px-5 py-2.5 bg-bg-card rounded-xl border border-white/10 hover:border-accent-primary hover:bg-bg-card-hover transition-all group">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                     <path
                         d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
                 </svg>
-                GitHub
+                <span class="text-sm font-semibold">GitHub</span>
             </a>
         </div>
     </nav>
 
-    <main>
-        <section class="hero">
-            <div class="hero-content">
-                <div class="hero-badge">🌍 Code Without Barriers</div>
-                <h1>Program in <span class="gradient-text" id="rotating-lang">Tamil</span></h1>
-                <p class="hero-description">
-                    Ritam is a sovereign programming language that lets you write code in your native language.
-                    Tamil, Hindi, Telugu, Spanish and more — all compile to blazing fast JavaScript.
+    <main class="pt-24 space-y-32 pb-32">
+        <!-- Hero Section -->
+        <section class="max-w-7xl mx-auto px-8 grid lg:grid-cols-2 gap-20 items-center min-h-[85vh]">
+            <div class="space-y-10">
+                <div
+                    class="inline-flex items-center px-4 py-2 rounded-full bg-accent-primary/10 border border-accent-primary/20 text-accent-primary text-xs font-bold tracking-wider uppercase">
+                    🌍 Global Sovereign Computing</div>
+                <h1 class="text-7xl md:text-8xl font-black tracking-tight leading-[0.9]">
+                    Code in <br />
+                    <span
+                        class="bg-gradient-to-r from-accent-primary via-accent-secondary to-accent-tertiary bg-clip-text text-transparent px-1"
+                        id="rotating-lang">Tamil</span>
+                </h1>
+                <p class="text-xl text-white/50 max-w-xl leading-relaxed font-light">
+                    Ritam is a multilingual programming language that empowers millions to build the future using their
+                    native script.
+                    From Tamil to Spanish, write once and run everywhere.
                 </p>
-                <div class="hero-actions">
-                    <a href="#demo" class="btn btn-primary">
-                        <span>Try Live Demo</span>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
+                <div class="flex flex-wrap gap-6 pt-4">
+                    <a href="#demo"
+                        class="group px-10 py-5 bg-gradient-primary rounded-2xl font-bold flex items-center gap-3 shadow-2xl shadow-accent-primary/40 hover:shadow-accent-primary/60 transition-all hover:-translate-y-1">
+                        <span>Get Started</span>
+                        <svg class="group-hover:translate-x-1 transition-transform" width="20" height="20"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                             <path d="M5 12h14M12 5l7 7-7 7" />
                         </svg>
                     </a>
-                    <a href="#" class="btn btn-secondary">
-                        npm install -g ritam
-                    </a>
+                    <div
+                        class="px-8 py-5 bg-bg-card rounded-2xl border border-white/5 font-mono text-sm flex items-center gap-4 text-white/90 backdrop-blur-sm">
+                        <span class="text-accent-primary/60">$</span>
+                        <span>npm install -g ritam</span>
+                    </div>
                 </div>
             </div>
-            <div class="hero-code">
-                <div class="code-window">
-                    <div class="window-header">
-                        <div class="window-dots">
-                            <span class="dot red"></span>
-                            <span class="dot yellow"></span>
-                            <span class="dot green"></span>
+
+            <div class="relative group lg:block hidden">
+                <div
+                    class="absolute -inset-0.5 bg-gradient-to-r from-accent-primary to-accent-tertiary rounded-[2.5rem] blur opacity-20 group-hover:opacity-40 transition-opacity">
+                </div>
+                <div class="relative bg-bg-secondary rounded-[2.5rem] border border-white/10 p-1.5 shadow-2xl">
+                    <div class="bg-bg-card rounded-[2.2rem] overflow-hidden">
+                        <div
+                            class="px-8 py-5 border-b border-white/5 flex items-center justify-between bg-white/[0.02]">
+                            <div class="flex gap-2.5">
+                                <div class="w-3.5 h-3.5 rounded-full bg-[#ff5f56]"></div>
+                                <div class="w-3.5 h-3.5 rounded-full bg-[#ffbd2e]"></div>
+                                <div class="w-3.5 h-3.5 rounded-full bg-[#27ca40]"></div>
+                            </div>
+                            <span
+                                class="text-[10px] font-mono font-bold text-white/20 tracking-widest uppercase">main_app.rvx</span>
                         </div>
-                        <span class="window-title">hello.rvx</span>
-                    </div>
-                    <pre class="code-content"><code><span class="comment">// வணக்கம் உலகம் - Hello World in Tamil</span>
+                        <div class="p-10 font-mono text-[15px] leading-8 overflow-x-auto whitespace-pre"><code><span class="text-white/20 italic">// ரிதம் - ஒரு புதிய தொடக்கம்</span>
 
-<span class="keyword">மாறி</span> பெயர் = <span class="string">"Ritam"</span>
-<span class="keyword">மாறி</span> வயது = <span class="number">1</span>
+<span class="text-accent-tertiary">மாறி</span> மொழி = <span class="text-accent-primary">"தமிழ்"</span>
+<span class="text-accent-tertiary">மாறி</span> நிலை = <span class="text-accent-secondary">உண்மை</span>
 
-<span class="keyword">செயல்</span> வாழ்த்து(பெயர்) {
-    <span class="builtin">#std.print</span>(<span class="string">"வணக்கம் "</span> + பெயர்)
+<span class="text-accent-tertiary">செயல்</span> தொடங்கு() {
+    <span class="text-emerald-400">#std.print</span>(<span class="text-accent-primary">"வணக்கம், "</span> + மொழி)
 }
 
-<span class="keyword">என்றால்</span> வயது >= <span class="number">1</span> {
-    வாழ்த்து(பெயர்)
-}</code></pre>
-                </div>
-            </div>
-        </section>
-
-        <section id="features" class="features">
-            <h2>Why Ritam?</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🌐</div>
-                    <h3>Multilingual</h3>
-                    <p>Write code in Tamil, Hindi, Telugu, Kannada, Malayalam, or Spanish. Your language, your code.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
-                    <h3>Fast Compilation</h3>
-                    <p>Lightning-fast transpilation to optimized JavaScript for Node.js, Web, and Mobile.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🔐</div>
-                    <h3>Sovereign Runtime</h3>
-                    <p>Built-in standard library with crypto, HTTP, file I/O, and testing utilities.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📱</div>
-                    <h3>Cross-Platform</h3>
-                    <p>Deploy to web, Node.js, React Native, or Electron from a single codebase.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🎯</div>
-                    <h3>Easy to Learn</h3>
-                    <p>Intuitive syntax designed for beginners. No English required to start coding.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🛠️</div>
-                    <h3>Great Tooling</h3>
-                    <p>VS Code extension, LSP support, REPL, and comprehensive documentation.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="languages" class="languages">
-            <h2>Available Languages</h2>
-            <div class="language-cards">
-                <div class="lang-card" data-lang="tamil">
-                    <span class="lang-script">த</span>
-                    <span class="lang-name">Tamil</span>
-                    <code class="lang-keyword">மாறி, செயல், என்றால்</code>
-                </div>
-                <div class="lang-card" data-lang="hindi">
-                    <span class="lang-script">हि</span>
-                    <span class="lang-name">Hindi</span>
-                    <code class="lang-keyword">चर, कार्य, अगर</code>
-                </div>
-                <div class="lang-card" data-lang="telugu">
-                    <span class="lang-script">తె</span>
-                    <span class="lang-name">Telugu</span>
-                    <code class="lang-keyword">మార్పు, విధి, ఉంటే</code>
-                </div>
-                <div class="lang-card" data-lang="kannada">
-                    <span class="lang-script">ಕ</span>
-                    <span class="lang-name">Kannada</span>
-                    <code class="lang-keyword">ಮಾರ್ಪಾಡು, ಕಾರ್ಯ, ಆದರೆ</code>
-                </div>
-                <div class="lang-card" data-lang="malayalam">
-                    <span class="lang-script">മ</span>
-                    <span class="lang-name">Malayalam</span>
-                    <code class="lang-keyword">മാറി, പ്രവർത്തനം, എങ്കിൽ</code>
-                </div>
-                <div class="lang-card" data-lang="spanish">
-                    <span class="lang-script">Es</span>
-                    <span class="lang-name">Spanish</span>
-                    <code class="lang-keyword">variable, función, si</code>
-                </div>
-            </div>
-        </section>
-
-        <section id="reactive-demo" class="live-demo">
-            <div class="demo-container">
-                <div class="demo-info">
-                    <div class="hero-badge">✨ Live Reactive App</div>
-                    <h2>The Sovereign Counter</h2>
-                    <p>
-                        Witness the power of Ritam's reactive engine. This counter is written entirely in Tamil
-                        and compiled to clean, performant JavaScript.
-                    </p>
-                    <div class="demo-code-preview">
-                        <pre><code>மாறி எண்ணிக்கை = 0
-கூறு முதன்மை {
-    காண்பி "h2" "எண்ணிக்கை: " {
-        எண்ணிக்கை
-    }
-    காண்பி "button" "அதிகரி (+)" {
-        சுடுக்கு அதிகரி
-    }
-}</code></pre>
-                    </div>
-                </div>
-                <div class="demo-app-window">
-                    <div class="window-header">
-                        <div class="window-dots">
-                            <span class="dot red"></span>
-                            <span class="dot yellow"></span>
-                            <span class="dot green"></span>
-                        </div>
-                        <span class="window-title">Preview: counter_app.rvx</span>
-                    </div>
-                    <div id="ritam-mount" class="demo-mount">
-                        <!-- Ritam App will mount here -->
-                        <div class="loading-state">Initializing Sovereign Runtime...</div>
+<span class="text-accent-tertiary">என்றால்</span> நிலை {
+    தொடங்கு()
+}</code></div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="demo" class="demo">
-            <h2>Live Playground</h2>
-            <p class="demo-subtitle">Write Ritam code and see the JavaScript output</p>
-            <div class="playground">
-                <div class="editor-panel">
-                    <div class="panel-header">
-                        <span class="panel-title">📝 Ritam Code</span>
-                        <select id="lang-select">
-                            <option value="tamil">Tamil</option>
-                            <option value="hindi">Hindi</option>
-                            <option value="telugu">Telugu</option>
+        <!-- Features Grid -->
+        <section id="features" class="max-w-7xl mx-auto px-8 space-y-20">
+            <div class="text-center space-y-6">
+                <h2 class="text-5xl font-black tracking-tight">Powerful by Nature</h2>
+                <div class="w-24 h-1.5 bg-gradient-primary mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div
+                    class="p-10 bg-bg-card rounded-[2.5rem] border border-white/5 hover:border-accent-primary/40 hover:bg-bg-card-hover transition-all group relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-accent-primary/5 blur-3xl rounded-full"></div>
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-accent-primary/10 flex items-center justify-center text-3xl mb-8 group-hover:scale-110 transition-transform shadow-inner">
+                        🌐</div>
+                    <h3 class="text-2xl font-bold mb-4">Truly Multilingual</h3>
+                    <p class="text-white/40 leading-relaxed font-light">Architecture built from ground up to support
+                        Unicode scripts as first-class citizens.</p>
+                </div>
+
+                <div
+                    class="p-10 bg-bg-card rounded-[2.5rem] border border-white/5 hover:border-accent-secondary/40 hover:bg-bg-card-hover transition-all group relative overflow-hidden">
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-accent-secondary/10 flex items-center justify-center text-3xl mb-8 group-hover:scale-110 transition-transform">
+                        ⚡</div>
+                    <h3 class="text-2xl font-bold mb-4">Native Performance</h3>
+                    <p class="text-white/40 leading-relaxed font-light">Zero-overhead transpilation to optimized machine
+                        code or modern JavaScript runtimes.</p>
+                </div>
+
+                <div
+                    class="p-10 bg-bg-card rounded-[2.5rem] border border-white/5 hover:border-accent-tertiary/40 hover:bg-bg-card-hover transition-all group relative overflow-hidden">
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-accent-tertiary/10 flex items-center justify-center text-3xl mb-8 group-hover:scale-110 transition-transform">
+                        🔐</div>
+                    <h3 class="text-2xl font-bold mb-4">Sovereign First</h3>
+                    <p class="text-white/40 leading-relaxed font-light">Independent standard library ensuring your apps
+                        run without external dark dependencies.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Playground Section -->
+        <section id="demo" class="max-w-7xl mx-auto px-8 space-y-16">
+            <div class="flex flex-col md:flex-row items-end justify-between gap-6 overflow-hidden">
+                <div class="space-y-4">
+                    <h2 class="text-5xl font-black tracking-tight">Interactive Playground</h2>
+                    <p class="text-white/40 text-lg font-light">Compile Ritam to JavaScript in real-time.</p>
+                </div>
+                <div class="flex items-center gap-4 bg-bg-card p-2 rounded-2xl border border-white/5">
+                    <button
+                        class="px-6 py-2.5 rounded-xl bg-bg-secondary text-xs font-bold text-white/60">Node.js</button>
+                    <button class="px-6 py-2.5 rounded-xl bg-accent-primary text-xs font-bold text-white shadow-lg">Web
+                        Browser</button>
+                </div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-10 min-h-[600px]">
+                <!-- Input Panel -->
+                <div
+                    class="flex flex-col bg-bg-secondary rounded-[2.5rem] border border-white/10 overflow-hidden shadow-2xl relative group">
+                    <div class="px-10 py-6 flex items-center justify-between bg-white/[0.02] border-b border-white/5">
+                        <span class="text-xs font-bold tracking-widest uppercase text-white/30 flex items-center gap-3">
+                            <span class="w-1.5 h-1.5 rounded-full bg-accent-primary animate-pulse"></span>
+                            Input Sources
+                        </span>
+                        <select id="lang-select"
+                            class="bg-bg-card text-xs font-bold border border-white/10 rounded-xl px-4 py-2 focus:outline-none focus:border-accent-primary transition-all text-white/80 outline-none hover:bg-bg-card-hover">
+                            <option value="tamil">Tamil (தமிழ்)</option>
+                            <option value="hindi">Hindi (हिन्दी)</option>
+                            <option value="telugu">Telugu (తెలుగు)</option>
+                            <option value="spanish">Spanish (Español)</option>
                         </select>
                     </div>
-                    <textarea id="ritam-input" spellcheck="false">// வணக்கம் உலகம்
+                    <textarea id="ritam-input"
+                        class="flex-1 w-full p-12 bg-transparent font-mono text-base leading-[2] resize-none focus:outline-none text-white/80 selection:bg-accent-primary/30"
+                        spellcheck="false">// வணக்கம் உலகம்
 மாறி எண் = 42
 மாறி பெயர் = "ரிதம்"
 
@@ -219,33 +257,60 @@
 
 மாறி விடை = கூட்டு(10, 20)
 #std.print("விடை: " + விடை)</textarea>
+                    <div class="absolute bottom-10 right-10 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span
+                            class="text-[10px] bg-bg-card px-3 py-1 rounded-full border border-white/5 text-white/30 font-mono italic">Ready
+                            for input...</span>
+                    </div>
                 </div>
-                <div class="output-panel">
-                    <div class="panel-header">
-                        <span class="panel-title">⚡ JavaScript Output</span>
-                        <button id="compile-btn" class="compile-btn">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+
+                <!-- Output Panel -->
+                <div
+                    class="flex flex-col bg-bg-secondary rounded-[2.5rem] border border-white/10 overflow-hidden shadow-2xl relative">
+                    <div class="px-10 py-6 flex items-center justify-between bg-white/[0.02] border-b border-white/5">
+                        <span class="text-xs font-bold tracking-widest uppercase text-white/30">Transpiled Output</span>
+                        <button id="compile-btn"
+                            class="px-6 py-3 bg-gradient-primary rounded-xl text-xs font-black shadow-xl flex items-center gap-3 hover:scale-[1.03] active:scale-95 transition-all shadow-accent-primary/20">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M8 5v14l11-7z" />
                             </svg>
-                            Compile
+                            <span>EXECUTE COMPILE</span>
                         </button>
                     </div>
-                    <pre id="js-output" class="output-code"><code>// Click "Compile" to see the output</code></pre>
+                    <div class="flex-1 relative">
+                        <pre id="js-output"
+                            class="absolute inset-0 p-12 font-mono text-[14px] leading-8 text-emerald-400/90 overflow-auto scrollbar-hide selection:bg-emerald-500/20"><code>// Click "Compile" to see the output</code></pre>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="cta">
-            <div class="cta-content">
-                <h2>Ready to code in your language?</h2>
-                <p>Get started with Ritam in under a minute</p>
-                <div class="install-command">
-                    <code>npm install -g ritam</code>
-                    <button id="copy-btn" class="copy-btn" title="Copy to clipboard">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
-                            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
+        <!-- CTA Section -->
+        <section class="max-w-5xl mx-auto px-8 py-32 text-center space-y-12">
+            <h2 class="text-6xl md:text-7xl font-black tracking-tight flex flex-col gap-4">
+                <span>Start building</span>
+                <span
+                    class="bg-gradient-to-r from-accent-primary via-accent-secondary to-accent-tertiary bg-clip-text text-transparent italic">Today.</span>
+            </h2>
+            <p class="text-xl text-white/40 font-light leading-relaxed max-w-2xl mx-auto">
+                No language barriers. No English requirements. Just pure creativity and native logic flowing into
+                high-performance code.
+            </p>
+            <div class="relative inline-block group">
+                <div
+                    class="absolute -inset-1 bg-gradient-primary blur-2xl opacity-20 group-hover:opacity-40 transition-opacity rounded-[2rem]">
+                </div>
+                <div
+                    class="relative p-7 bg-bg-card rounded-[2rem] border border-white/5 inline-flex flex-col md:flex-row items-center gap-10 backdrop-blur-xl">
+                    <code
+                        class="text-3xl font-mono font-bold tracking-tighter text-accent-primary">npm install -g ritam</code>
+                    <button id="copy-btn"
+                        class="p-4 bg-white/5 hover:bg-white/10 rounded-2xl transition-all hover:scale-105 active:scale-90"
+                        title="Copy to clipboard">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
                         </svg>
                     </button>
                 </div>
@@ -253,85 +318,63 @@
         </section>
     </main>
 
-    <footer>
-        <div class="footer-content">
-            <div class="footer-brand">
-                <span class="logo">ரி</span>
-                <span>Ritam</span>
+    <!-- Footer -->
+    <footer class="border-t border-white/5 py-20 bg-white/[0.01]">
+        <div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-12">
+            <div class="flex flex-col items-center md:items-start gap-4">
+                <div class="flex items-center gap-4 text-2xl font-black italic tracking-tighter">
+                    <div
+                        class="w-10 h-10 bg-gradient-primary rounded-xl flex items-center justify-center text-lg shadow-xl shadow-accent-primary/20">
+                        ரி</div>
+                    <span>Ritam</span>
+                </div>
+                <p class="text-white/30 text-xs font-mono tracking-widest uppercase">The Sovereign Code Foundation ©
+                    2026</p>
             </div>
-            <p>Made with ❤️ for multilingual developers</p>
-            <div class="footer-links">
-                <a href="https://github.com/RichardWilliyam/ritam">GitHub</a>
-                <a href="#">Documentation</a>
-                <a href="#">Discord</a>
+
+            <div class="flex gap-12">
+                <div class="flex flex-col gap-4">
+                    <span class="text-[10px] font-bold text-white/20 tracking-widest uppercase">Socials</span>
+                    <div class="flex flex-col gap-2 text-sm text-white/60">
+                        <a href="https://github.com/RichardWilliyam/ritam"
+                            class="hover:text-accent-primary transition-colors">GitHub</a>
+                        <a href="#" class="hover:text-accent-primary transition-colors">X (Twitter)</a>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <span class="text-[10px] font-bold text-white/20 tracking-widest uppercase">Resources</span>
+                    <div class="flex flex-col gap-2 text-sm text-white/60">
+                        <a href="#" class="hover:text-accent-primary transition-colors">Documentation</a>
+                        <a href="#" class="hover:text-accent-primary transition-colors">Examples</a>
+                    </div>
+                </div>
             </div>
         </div>
     </footer>
 
     <script>
-        // ========== Ritam Live Demo Implementation ==========
-        function initLiveDemo() {
-            const mountPoint = document.getElementById('ritam-mount');
-            if (!mountPoint) return;
-
-            // Clear loading state
-            mountPoint.innerHTML = '';
-
-            // The compiled script is already generated and saved as web-demo/counter-demo.js
-            // We load it dynamically and set the mountRoot
-            const script = document.createElement('script');
-            script.src = 'counter-demo.js';
-            script.onload = () => {
-                // Since the script runs immediately, we need to make sure _rt exists
-                if (typeof _rt !== 'undefined') {
-                    // Reset the runtime to mount to our div instead of body
-                    // Note: In a real app we'd pass this via config, but here we can hack the global
-                    _rt.mountRoot = mountPoint;
-
-                    // Re-run the main component if it's defined
-                    if (typeof முதன்மை === 'function') {
-                        mountPoint.innerHTML = ''; // Clear again
-                        முதன்மை();
-                    }
-                }
-            };
-            document.body.appendChild(script);
-        }
-
-
-        // Ritam Web Demo - Interactive JavaScript
-
-        document.addEventListener('DOMContentLoaded', () => {
-            initLiveDemo();
-            initRotatingText();
-            initCompiler();
-            initCopyButton();
-            initSmoothScroll();
-            initLanguageCards();
-        });
-
-        // ========== Rotating Language Text ==========
+        // Rotating Language Text
         function initRotatingText() {
-            const languages = ['Tamil', 'Hindi', 'Telugu', 'Kannada', 'Malayalam', 'Spanish'];
+            const languages = ['Tamil (தமிழ்)', 'Hindi (हिन्दी)', 'Telugu (తెలుగు)', 'Spanish (Español)', 'Bengali (বাংলা)', 'Marathi (मराठी)'];
             const element = document.getElementById('rotating-lang');
             let index = 0;
 
             setInterval(() => {
                 element.style.opacity = '0';
-                element.style.transform = 'translateY(-10px)';
+                element.style.transform = 'translateY(-15px)';
 
                 setTimeout(() => {
                     index = (index + 1) % languages.length;
-                    element.textContent = languages[index];
+                    element.textContent = languages[index].split(' ')[0]; // Just the name for the hero
                     element.style.opacity = '1';
                     element.style.transform = 'translateY(0)';
-                }, 300);
-            }, 2500);
+                }, 400);
+            }, 3000);
 
-            element.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+            element.style.transition = 'opacity 0.4s cubic-bezier(0.23, 1, 0.32, 1), transform 0.4s cubic-bezier(0.23, 1, 0.32, 1)';
         }
 
-        // ========== Mock Compiler ==========
+        // Mock Compiler Logic
         function initCompiler() {
             const compileBtn = document.getElementById('compile-btn');
             const input = document.getElementById('ritam-input');
@@ -339,185 +382,59 @@
             const langSelect = document.getElementById('lang-select');
 
             const sampleCode = {
-                tamil: `// வணக்கம் உலகம்
-    மாறி எண் = 42
-    மாறி பெயர் = "ரிதம்"
-
-    செயல் கூட்டு(அ, ஆ) {
-    திருப்பு அ + ஆ
-    }
-
-    மாறி விடை = கூட்டு(10, 20)
-    #std.print("விடை: " + விடை)`,
-
-                hindi: `// नमस्ते दुनिया
-    चर संख्या = 42
-    चर नाम = "रितम"
-
-    कार्य जोड़(अ, ब) {
-    लौटाओ अ + ब
-    }
-
-    चर उत्तर = जोड़(10, 20)
-    #std.print("उत्तर: " + उत्तर)`,
-
-                telugu: `// నమస్కారం ప్రపంచం
-    మార్పు సంఖ్య = 42
-    మార్పు పేరు = "రితం"
-
-    విధి కూడిక(అ, ఆ) {
-    తిరిగి అ + ఆ
-    }
-
-    మార్పు జవాబు = కూడిక(10, 20)
-    #std.print("జవాబు: " + జవాబు)`
+                tamil: `// வணக்கம் உலகம்\nமாறி எண் = 42\nமாறி பெயர் = "ரிதம்"\n\nசெயல் கூட்டு(அ, ஆ) {\n    திருப்பு அ + ஆ\n}\n\nமாறி விடை = கூட்டு(10, 20)\n#std.print("விடை: " + விடை)`,
+                hindi: `// नमस्ते दुनिया\nचर संख्या = 42\nचर नाम = "रितम"\n\nकार्य जोड़(अ, ब) {\n    लौटाओ अ + ब\n}\n\nचर उत्तर = जोड़(10, 20)\n#std.print("उत्तर: " + उत्तर)`,
+                telugu: `// నమస్కారం ప్రపంచం\nమార్పు సంఖ్య = 42\nమార్పు పేరు = "రితం"\n\nవిధి కూడిక(அ, ஆ) {\n    తిరిగి అ + ఆ\n}\n\nమార్పు జవాబు = కూడిక(10, 20)\n#std.print("జవాబు: " + జవాబు)`,
+                spanish: `// Hola Mundo\nvariable num = 42\nvariable nombre = "Ritam"\n\nfunción sumar(a, b) {\n    retornar a + b\n}\n\nvariable result = sumar(10, 20)\n#std.print("Resultado: " + result)`
             };
 
             const keywordMaps = {
-                tamil: {
-                    'மாறி': 'let',
-                    'செயல்': 'function',
-                    'திருப்பு': 'return',
-                    'என்றால்': 'if',
-                    'இல்லை': 'else',
-                    'போது': 'while',
-                    '#std.print': 'console.log'
-                },
-                hindi: {
-                    'चर': 'let',
-                    'कार्य': 'function',
-                    'लौटाओ': 'return',
-                    'अगर': 'if',
-                    'वरना': 'else',
-                    'जबतक': 'while',
-                    '#std.print': 'console.log'
-                },
-                telugu: {
-                    'మార్పు': 'let',
-                    'విధి': 'function',
-                    'తిరిగి': 'return',
-                    'ఉంటే': 'if',
-                    'లేకపోతే': 'else',
-                    'అయ్యేవరకు': 'while',
-                    '#std.print': 'console.log'
-                }
+                tamil: { 'மாறி': 'let', 'செயல்': 'function', 'திருப்பு': 'return', 'என்றால்': 'if', '#std.print': 'console.log' },
+                hindi: { 'चर': 'let', 'कार्य': 'function', 'लौटाओ': 'return', 'अगर': 'if', '#std.print': 'console.log' },
+                telugu: { 'మార్పు': 'let', 'విధి': 'function', 'తిరిగి': 'return', 'ఉంటే': 'if', '#std.print': 'console.log' },
+                spanish: { 'variable': 'let', 'función': 'function', 'retornar': 'return', 'si': 'if', '#std.print': 'console.log' }
             };
 
             langSelect.addEventListener('change', (e) => {
-                const lang = e.target.value;
-                input.value = sampleCode[lang] || sampleCode.tamil;
+                input.value = sampleCode[e.target.value] || sampleCode.tamil;
                 output.innerHTML = '<code>// Click "Compile" to see the output</code>';
             });
 
             compileBtn.addEventListener('click', () => {
-                const code = input.value;
                 const lang = langSelect.value;
-
-                compileBtn.innerHTML = `<svg class="spin" width="16" height="16" viewBox="0 0 24 24" fill="none"
-        stroke="currentColor" stroke-width="2">
-        <circle cx="12" cy="12" r="10" opacity="0.25" />
-        <path d="M12 2a10 10 0 0 1 10 10" />
-    </svg> Compiling...`;
+                compileBtn.innerHTML = `<svg class="animate-spin" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10" opacity="0.25"></circle><path d="M12 2a10 10 0 0 1 10 10"></path></svg> <span>PROCESSING...</span>`;
                 compileBtn.disabled = true;
 
                 setTimeout(() => {
-                    const compiledCode = mockCompile(code, lang, keywordMaps);
-                    output.innerHTML = `<code>${escapeHtml(compiledCode)}</code>`;
-
-                    compileBtn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M8 5v14l11-7z" />
-    </svg> Compile`;
+                    let result = input.value;
+                    const map = keywordMaps[lang] || keywordMaps.tamil;
+                    let prefix = `// Generated by Ritam Compiler v0.2.3\n// Target: Universal Web\n\n`;
+                    for (const [native, js] of Object.entries(map)) {
+                        result = result.replace(new RegExp(native, 'g'), js);
+                    }
+                    output.innerHTML = `<code>${prefix + result.replace(/\/\/.*/g, (m) => '<span class="text-white/20 italic">' + m + ' // [mapped]</span>')}</code>`;
+                    compileBtn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg> <span>EXECUTE COMPILE</span>`;
                     compileBtn.disabled = false;
                 }, 800);
             });
         }
 
-        function mockCompile(code, lang, keywordMaps) {
-            let result = code;
-            const map = keywordMaps[lang] || keywordMaps.tamil;
-
-            let output = `// Generated by Ritam Compiler v0.1.2\n// Target: Node.js\n\nconst $std =
-    require('@ritam/runtime');\n\n`;
-
-            for (const [native, js] of Object.entries(map)) {
-                const regex = new RegExp(escapeRegex(native), 'g');
-                result = result.replace(regex, js);
-            }
-
-            result = result.replace(/\/\/.*/g, (match) => match + ' // (translated)');
-            output += result;
-
-            return output;
-        }
-
-        // ========== Copy Button ==========
+        // Copy Button Animation
         function initCopyButton() {
             const copyBtn = document.getElementById('copy-btn');
-
             copyBtn.addEventListener('click', async () => {
-                try {
-                    await navigator.clipboard.writeText('npm install -g ritam');
-                    copyBtn.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#27ca40" stroke-width="2">
-        <polyline points="20 6 9 17 4 12" />
-    </svg>`;
-
-                    setTimeout(() => {
-                        copyBtn.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-        stroke-width="2">
-        <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
-        <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
-    </svg>`;
-                    }, 2000);
-                } catch (err) {
-                    console.error('Failed to copy:', err);
-                }
+                await navigator.clipboard.writeText('npm install -g ritam');
+                const originalHtml = copyBtn.innerHTML;
+                copyBtn.innerHTML = `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#27ca40" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
+                setTimeout(() => copyBtn.innerHTML = originalHtml, 2000);
             });
         }
 
-        // ========== Smooth Scroll ==========
-        function initSmoothScroll() {
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
-                });
-            });
-        }
-
-        // ========== Language Cards Animation ==========
-        function initLanguageCards() {
-            const cards = document.querySelectorAll('.lang-card');
-
-            cards.forEach(card => {
-                card.addEventListener('mouseenter', () => {
-                    card.style.boxShadow = '0 0 30px rgba(99, 102, 241, 0.4)';
-                });
-
-                card.addEventListener('mouseleave', () => {
-                    card.style.boxShadow = 'none';
-                });
-            });
-        }
-
-        // ========== Utility Functions ==========
-        function escapeHtml(text) {
-            const div = document.createElement('div');
-            div.textContent = text;
-            return div.innerHTML;
-        }
-
-        function escapeRegex(string) {
-            return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-        }
-
-        // Add spin animation
-        const style = document.createElement('style');
-        style.textContent = `@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } } .spin {
-    animation: spin 1s linear infinite; }`;
-        document.head.appendChild(style);
+        document.addEventListener('DOMContentLoaded', () => {
+            initRotatingText();
+            initCompiler();
+            initCopyButton();
+        });
     </script>
 </body>
 

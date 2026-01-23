@@ -1,0 +1,69 @@
+// ═══════════════════════════════════════════════════════════════════════════
+// Spanish Keywords Unit Test Suite
+// Language: Spanish (Español)
+// ═══════════════════════════════════════════════════════════════════════════
+
+// 1. Variable Declaration
+funcion testVariables() {
+    variable x = 10
+    constante y = 20
+    #std.test.assert(x == 10, "Variable x failed")
+    #std.test.assert(y == 20, "Constant y failed")
+}
+
+// 2. Control Flow
+funcion testControlFlow() {
+    variable value = 15
+    variable result = ""
+    
+    si value < 10 {
+        result = "small"
+    } sino si value < 20 {
+        result = "medium"
+    } sino {
+        result = "large"
+    }
+    
+    #std.test.assert(result == "medium", "Control flow failed")
+}
+
+// 3. Logic & Loops
+funcion testLoops() {
+    variable sum = 0
+    variable i = 0
+    mientras i < 5 {
+        sum = sum + i
+        i = i + 1
+    }
+    #std.test.assert(sum == 10, "Loop failed")
+}
+
+// 4. Pattern Matching
+funcion testMatch() {
+    variable val = 1
+    variable output = ""
+    coincidir val {
+        1 { output = "one" }
+        2 { output = "two" }
+    }
+    #std.test.assert(output == "one", "Match failed")
+}
+
+// 5. Async/Await
+asincrono funcion testAsync() {
+    asincrono funcion getVal() { retornar 42 }
+    variable v = esperar getVal()
+    #std.test.assert(v == 42, "Async failed")
+}
+
+// Runner
+asincrono funcion runTests() {
+    esperar #std.test.describe("Variables", testVariables)
+    esperar #std.test.describe("Control Flow", testControlFlow)
+    esperar #std.test.describe("Loops", testLoops)
+    esperar #std.test.describe("Match", testMatch)
+    esperar #std.test.describe("Async", testAsync)
+}
+
+esperar runTests()
+#std.print("✅ All Spanish Tests Completed")

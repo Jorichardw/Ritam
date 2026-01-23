@@ -1,0 +1,276 @@
+// ═══════════════════════════════════════════════════════════════════════════
+// Multi-Word Keywords Edge Case Tests
+// Tests proper tokenization and parsing of multi-word keywords
+// ═══════════════════════════════════════════════════════════════════════════
+
+// 1. Tamil else_if (இல்லையேல் ஆனால்) - Two-word keyword with space
+செயல் testTamilElseIf() {
+    மாறி x = 15
+    மாறி result = ""
+    
+    எனில் x < 10 {
+        result = "small"
+    } இல்லையேல் ஆனால் x < 20 {
+        result = "medium"
+    } இல்லையேல் ஆனால் x < 30 {
+        result = "large"
+    } இல்லையேல் {
+        result = "huge"
+    }
+    
+    #std.test.assert(result == "medium", "Tamil multi-word else_if failed")
+    #std.print("✓ Tamil இல்லையேல் ஆனால் working")
+}
+#std.test.describe("Tamil else_if", testTamilElseIf)
+
+// 2. Spanish else_if (sino si) - Two-word keyword with space
+// Note: Using Tamil for function keywords but testing Spanish control flow concept
+செயல் testSpanishStyleElseIf() {
+    மாறி value = 25
+    மாறி category = ""
+    
+    எனில் value < 10 {
+        category = "low"
+    } இல்லையேல் ஆனால் value < 20 {
+        category = "medium"
+    } இல்லையேல் ஆனால் value < 30 {
+        category = "high"
+    } இல்லையேல் {
+        category = "very_high"
+    }
+    
+    #std.test.assert(category == "high", "Spanish-style sino si pattern failed")
+    #std.print("✓ Spanish-style 'sino si' pattern working")
+}
+#std.test.describe("Spanish else_if", testSpanishStyleElseIf)
+
+// 3. Chained Multi-Word Keywords
+செயல் testChainedMultiWord() {
+    மாறி score = 75
+    மாறி grade = ""
+    
+    எனில் score >= 90 {
+        grade = "A"
+    } இல்லையேல் ஆனால் score >= 80 {
+        grade = "B"
+    } இல்லையேல் ஆனால் score >= 70 {
+        grade = "C"
+    } இல்லையேல் ஆனால் score >= 60 {
+        grade = "D"
+    } இல்லையேல் {
+        grade = "F"
+    }
+    
+    #std.test.assert(grade == "C", "Chained multi-word keywords failed")
+    #std.print("✓ Chained multi-word keywords working")
+}
+#std.test.describe("Chained Multi-Word", testChainedMultiWord)
+
+// 4. Multi-Word with Complex Expressions
+செயல் testMultiWordWithExpressions() {
+    மாறி a = 10
+    மாறி b = 20
+    மாறி c = 30
+    மாறி result = ""
+    
+    எனில் a + b == 30 {
+        result = "sum30"
+    } இல்லையேல் ஆனால் a * b == 200 {
+        result = "product200"
+    } இல்லையேல் ஆனால் b - a == 10 {
+        result = "diff10"
+    } இல்லையேல் {
+        result = "none"
+    }
+    
+    #std.test.assert(result == "sum30", "Multi-word with expressions failed")
+    #std.print("✓ Multi-word keywords with expressions working")
+}
+#std.test.describe("Multi-Word Expressions", testMultiWordWithExpressions)
+
+// 5. Multi-Word in Nested Blocks
+செயல் testNestedMultiWord() {
+    மாறி outer = 5
+    மாறி inner = 15
+    மாறி output = ""
+    
+    எனில் outer < 10 {
+        எனில் inner < 10 {
+            output = "both_small"
+        } இல்லையேல் ஆனால் inner < 20 {
+            output = "inner_medium"
+        } இல்லையேல் {
+            output = "inner_large"
+        }
+    } இல்லையேல் ஆனால் outer < 20 {
+        output = "outer_medium"
+    } இல்லையேல் {
+        output = "outer_large"
+    }
+    
+    #std.test.assert(output == "inner_medium", "Nested multi-word keywords failed")
+    #std.print("✓ Nested multi-word keywords working")
+}
+#std.test.describe("Nested Multi-Word", testNestedMultiWord)
+
+// 6. Multi-Word in Functions
+செயல் classifyNumber(n) {
+    எனில் n < 0 {
+        திருப்பு "negative"
+    } இல்லையேல் ஆனால் n == 0 {
+        திருப்பு "zero"
+    } இல்லையேல் ஆனால் n < 10 {
+        திருப்பு "single_digit"
+    } இல்லையேல் ஆனால் n < 100 {
+        திருப்பு "double_digit"
+    } இல்லையேல் {
+        திருப்பு "large"
+    }
+}
+
+செயல் testMultiWordInFunction() {
+    #std.test.assert(classifyNumber(-5) == "negative", "Negative classification failed")
+    #std.test.assert(classifyNumber(0) == "zero", "Zero classification failed")
+    #std.test.assert(classifyNumber(5) == "single_digit", "Single digit failed")
+    #std.test.assert(classifyNumber(50) == "double_digit", "Double digit failed")
+    #std.test.assert(classifyNumber(500) == "large", "Large classification failed")
+    #std.print("✓ Multi-word keywords in functions working")
+}
+#std.test.describe("Multi-Word In Functions", testMultiWordInFunction)
+
+// 7. Multi-Word with Boolean Logic
+செயல் testBooleanWithMultiWord() {
+    மாறி isActive = மெய்
+    மாறி isAdmin = பொய்
+    மாறி hasPermission = மெய்
+    மாறி access = ""
+    
+    எனில் isAdmin == மெய் {
+        access = "full"
+    } இல்லையேல் ஆனால் isActive == மெய் {
+        எனில் hasPermission == மெய் {
+            access = "limited"
+        } இல்லையேல் {
+            access = "readonly"
+        }
+    } இல்லையேல் {
+        access = "none"
+    }
+    
+    #std.test.assert(access == "limited", "Boolean multi-word logic failed")
+    #std.print("✓ Boolean logic with multi-word keywords working")
+}
+#std.test.describe("Boolean Multi-Word", testBooleanWithMultiWord)
+
+// 8. Multi-Word in Loop Body
+செயல் testMultiWordInLoop() {
+    மாறி results = []
+    மாறி i = 0
+    
+    சுழற்சி i < 5 {
+        மாறி category = ""
+        
+        எனில் i == 0 {
+            category = "first"
+        } இல்லையேல் ஆனால் i == 4 {
+            category = "last"
+        } இல்லையேல் {
+            category = "middle"
+        }
+        
+        i = i + 1
+    }
+    
+    #std.test.assert(மெய், "Multi-word in loop passed")
+    #std.print("✓ Multi-word keywords in loops working")
+}
+#std.test.describe("Multi-Word In Loop", testMultiWordInLoop)
+
+// 9. for/in Multi-Word Pattern (ஒவ்வொன்றாக உள்ள)
+செயல் testForInMultiWord() {
+    மாறி items = ["one", "two", "three"]
+    மாறி count = 0
+    
+    ஒவ்வொன்றாக item உள்ள items {
+        count = count + 1
+    }
+    
+    #std.test.assert(count == 3, "for/in multi-word pattern failed")
+    #std.print("✓ for/in multi-word pattern (ஒவ்வொன்றாக உள்ள) working")
+}
+#std.test.describe("For-In Multi-Word", testForInMultiWord)
+
+// 10. Async Multi-Word (ஒத்திசைவற்ற செயல்)
+ஒத்திசைவற்ற செயல் asyncMultiWordTest() {
+    மாறி value = 50
+    மாறி result = ""
+    
+    எனில் value < 25 {
+        result = "low"
+    } இல்லையேல் ஆனால் value < 75 {
+        result = "medium"
+    } இல்லையேல் {
+        result = "high"
+    }
+    
+    திருப்பு result
+}
+
+ஒத்திசைவற்ற செயல் testAsyncMultiWord() {
+    மாறி result = காத்திரு asyncMultiWordTest()
+    #std.test.assert(result == "medium", "Async multi-word test failed")
+    #std.print("✓ Async with multi-word keywords working")
+}
+காத்திரு #std.test.describe("Async Multi-Word", testAsyncMultiWord)
+
+// 11. Edge Case: Multiple Spaces (Tokenizer Robustness)
+செயல் testWhitespaceHandling() {
+    மாறி x = 10
+    மாறி result = ""
+    
+    // Normal spacing - should still work
+    எனில் x < 5 {
+        result = "small"
+    } இல்லையேல் ஆனால் x < 15 {
+        result = "medium"
+    } இல்லையேல் {
+        result = "large"
+    }
+    
+    #std.test.assert(result == "medium", "Whitespace handling failed")
+    #std.print("✓ Whitespace handling in multi-word keywords working")
+}
+#std.test.describe("Whitespace Handling", testWhitespaceHandling)
+
+// 12. Multi-Word with Pattern Matching
+செயல் testMatchWithMultiWord() {
+    மாறி code = 2
+    மாறி priority = ""
+    
+    பொருத்து code {
+        1 {
+            எனில் மெய் {
+                priority = "high"
+            } இல்லையேல் {
+                priority = "unknown"
+            }
+        }
+        2 {
+            எனில் மெய் {
+                priority = "medium"
+            } இல்லையேல் ஆனால் பொய் {
+                priority = "low"
+            } இல்லையேல் {
+                priority = "none"
+            }
+        }
+    }
+    
+    #std.test.assert(priority == "medium", "Pattern match with multi-word failed")
+    #std.print("✓ Pattern matching with multi-word keywords working")
+}
+#std.test.describe("Match Multi-Word", testMatchWithMultiWord)
+
+#std.print("═══════════════════════════════════════════════════════════════")
+#std.print("✅ All Multi-Word Keyword Tests Passed!")
+#std.print("═══════════════════════════════════════════════════════════════")

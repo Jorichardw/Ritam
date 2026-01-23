@@ -1,0 +1,7 @@
+// Debug Node Test
+செயல் test1() {
+    மாறி x = 1
+    #std.test.assert(x == 1, "Fail")
+}
+#std.test.describe("T1", test1)
+#std.print("OK")

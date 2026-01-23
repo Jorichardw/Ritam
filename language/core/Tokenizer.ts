@@ -207,7 +207,7 @@ export class Tokenizer {
                 continue;
             }
 
-            const multiOps = ['==', '!=', '>=', '<='];
+            const multiOps = ['==', '!=', '>=', '<=', '&&', '||'];
             let matchedOp = false;
             for (const op of multiOps) {
                 if (this.code.startsWith(op, this.pos)) {

@@ -1,0 +1,69 @@
+// ═══════════════════════════════════════════════════════════════════════════
+// Hindi Keywords Unit Test Suite
+// Language: Hindi (हिंदी)
+// ═══════════════════════════════════════════════════════════════════════════
+
+// 1. Variable Declaration
+कार्य testVariables() {
+    चर x = 10
+    स्थिर y = 20
+    #std.test.assert(x == 10, "Variable x failed")
+    #std.test.assert(y == 20, "Constant y failed")
+}
+
+// 2. Control Flow
+कार्य testControlFlow() {
+    चर value = 15
+    चर result = ""
+    
+    अगर value < 10 {
+        result = "small"
+    } वरना_अगर value < 20 {
+        result = "medium"
+    } वरना {
+        result = "large"
+    }
+    
+    #std.test.assert(result == "medium", "Control flow failed")
+}
+
+// 3. Logic & Loops
+कार्य testLoops() {
+    चर sum = 0
+    चर i = 0
+    जबतक i < 5 {
+        sum = sum + i
+        i = i + 1
+    }
+    #std.test.assert(sum == 10, "Loop failed")
+}
+
+// 4. Pattern Matching
+कार्य testMatch() {
+    चर val = 1
+    चर output = ""
+    मिलाओ val {
+        1 { output = "one" }
+        2 { output = "two" }
+    }
+    #std.test.assert(output == "one", "Match failed")
+}
+
+// 5. Async/Await
+असमकालिक कार्य testAsync() {
+    असमकालिक कार्य getVal() { लौटाओ 42 }
+    चर v = प्रतीक्षा getVal()
+    #std.test.assert(v == 42, "Async failed")
+}
+
+// Runner
+असमकालिक कार्य runTests() {
+    प्रतीक्षा #std.test.describe("Variables", testVariables)
+    प्रतीक्षा #std.test.describe("Control Flow", testControlFlow)
+    प्रतीक्षा #std.test.describe("Loops", testLoops)
+    प्रतीक्षा #std.test.describe("Match", testMatch)
+    प्रतीक्षा #std.test.describe("Async", testAsync)
+}
+
+प्रतीक्षा runTests()
+#std.print("✅ All Hindi Tests Completed")

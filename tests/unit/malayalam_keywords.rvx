@@ -1,0 +1,69 @@
+// ═══════════════════════════════════════════════════════════════════════════
+// Malayalam Keywords Unit Test Suite
+// Language: Malayalam (മലയാളം)
+// ═══════════════════════════════════════════════════════════════════════════
+
+// 1. Variable Declaration
+ഫങ്ഷൻ testVariables() {
+    ചരം x = 10
+    സ്ഥിരം y = 20
+    #std.test.assert(x == 10, "Variable x failed")
+    #std.test.assert(y == 20, "Constant y failed")
+}
+
+// 2. Control Flow
+ഫങ്ഷൻ testControlFlow() {
+    ചരം value = 15
+    ചരം result = ""
+    
+    എങ്കിൽ value < 10 {
+        result = "small"
+    } അല്ലെങ്കിൽ_എങ്കിൽ value < 20 {
+        result = "medium"
+    } അല്ലെങ്കിൽ {
+        result = "large"
+    }
+    
+    #std.test.assert(result == "medium", "Control flow failed")
+}
+
+// 3. Logic & Loops
+ഫങ്ഷൻ testLoops() {
+    ചരം sum = 0
+    ചരം i = 0
+    ആകുമ്പോൾ i < 5 {
+        sum = sum + i
+        i = i + 1
+    }
+    #std.test.assert(sum == 10, "Loop failed")
+}
+
+// 4. Pattern Matching
+ഫങ്ഷൻ testMatch() {
+    ചരം val = 1
+    ചരം output = ""
+    പൊരുത്തപ്പെടുത്തുക val {
+        1 { output = "one" }
+        2 { output = "two" }
+    }
+    #std.test.assert(output == "one", "Match failed")
+}
+
+// 5. Async/Await
+അസമകാലികം ഫങ്ഷൻ testAsync() {
+    അസമകാലികം ഫങ്ഷൻ getVal() { തിരികെ 42 }
+    ചരം v = കാത്തിരിക്കുക getVal()
+    #std.test.assert(v == 42, "Async failed")
+}
+
+// Runner
+അസമകാലികം ഫങ്ഷൻ runTests() {
+    കാത്തിരിക്കുക #std.test.describe("Variables", testVariables)
+    കാത്തിരിക്കുക #std.test.describe("Control Flow", testControlFlow)
+    കാത്തിരിക്കുക #std.test.describe("Loops", testLoops)
+    കാത്തിരിക്കുക #std.test.describe("Match", testMatch)
+    കാത്തിരിക്കുക #std.test.describe("Async", testAsync)
+}
+
+കാത്തിരിക്കുക runTests()
+#std.print("✅ All Malayalam Tests Completed")

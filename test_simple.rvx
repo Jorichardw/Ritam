@@ -1,0 +1,8 @@
+﻿// Test with assert and describe
+செயல் testBasic() {
+    மாறி x = 10
+    #std.test.assert(x == 10, "Basic test failed")
+}
+
+#std.test.describe("Basic Test", testBasic)
+#std.print("Test Complete")

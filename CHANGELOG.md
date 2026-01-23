@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.2.3] - 2026-01-21
+### Fixed
+- Updated package metadata and repository URLs to match current git configuration.
+
+### Changed
+- Major README overhaul with native code samples and improved visual layout.
+
 ## [0.2.2] - 2026-01-19
 ### Fixed
 - **Critical:** Fixed locale path resolution in `LanguageManager.ts` - locales are now correctly loaded from `dist/locales/`.

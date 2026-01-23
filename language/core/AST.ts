@@ -20,6 +20,7 @@ export type NodeType =
     | 'ThrowStatement'
     | 'EventStatement'
     | 'AttributeStatement'
+    | 'UnaryExpression'
     | 'Expression';
 
 export interface ASTNode {
@@ -61,7 +62,7 @@ export interface UIView extends ASTNode {
     children: ASTNode[];
 }
 
-export type Expression = Literal | Identifier | BinaryExpression | CallExpression | ArrayLiteral | AwaitExpression | MemberExpression;
+export type Expression = Literal | Identifier | BinaryExpression | UnaryExpression | CallExpression | ArrayLiteral | AwaitExpression | MemberExpression;
 
 export interface MemberExpression extends ASTNode {
     type: 'Expression';
@@ -87,6 +88,13 @@ export interface BinaryExpression extends ASTNode {
     type: 'Expression';
     kind: 'Binary';
     left: Expression;
+    operator: string;
+    right: Expression;
+}
+
+export interface UnaryExpression extends ASTNode {
+    type: 'Expression';
+    kind: 'Unary';
     operator: string;
     right: Expression;
 }

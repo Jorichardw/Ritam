@@ -1,0 +1,9 @@
+* text=auto
+
+*.js text eol=lf
+*.json text eol=lf
+*.dart text eol=lf
+*.rvx text eol=lf
+*.ts text eol=lf
+*.html text eol=lf
+*.css text eol=lf

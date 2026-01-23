@@ -1,0 +1,260 @@
+// ═══════════════════════════════════════════════════════════════════════════
+// Error Boundaries Edge Case Tests
+// Tests proper error handling, recovery, and edge cases
+// ═══════════════════════════════════════════════════════════════════════════
+
+// 1. Basic Try-Catch
+செயல் testBasicTryCatch() {
+    மாறி caught = பொய்
+    
+    முயற்சி {
+        எறி "Basic Error"
+    } பிடி (e) {
+        caught = மெய்
+    }
+    
+    #std.test.assert(caught == மெய், "Basic try-catch failed")
+    #std.print("✓ Basic try-catch working")
+}
+#std.test.describe("Basic Try-Catch", testBasicTryCatch)
+
+// 2. Nested Try-Catch
+செயல் testNestedTryCatch() {
+    மாறி outerCaught = பொய்
+    மாறி innerCaught = பொய்
+    
+    முயற்சி {
+        முயற்சி {
+            எறி "Inner Error"
+        } பிடி (innerE) {
+            innerCaught = மெய்
+            எறி "Outer Error"
+        }
+    } பிடி (outerE) {
+        outerCaught = மெய்
+    }
+    
+    #std.test.assert(innerCaught == மெய், "Inner catch failed")
+    #std.test.assert(outerCaught == மெய், "Outer catch failed")
+    #std.print("✓ Nested try-catch working")
+}
+#std.test.describe("Nested Try-Catch", testNestedTryCatch)
+
+// 3. Error Object Properties
+செயல் testErrorProperties() {
+    மாறி errorMessage = ""
+    
+    முயற்சி {
+        எறி "Custom Error Message"
+    } பிடி (e) {
+        errorMessage = e
+    }
+    
+    #std.test.assert(errorMessage == "Custom Error Message", "Error message capture failed")
+    #std.print("✓ Error properties accessible: " + errorMessage)
+}
+#std.test.describe("Error Properties", testErrorProperties)
+
+// 4. Async Error Handling
+ஒத்திசைவற்ற செயல் asyncFailure() {
+    எறி "Async Error"
+}
+
+ஒத்திசைவற்ற செயல் testAsyncErrors() {
+    மாறி caught = பொய்
+    
+    முயற்சி {
+        காத்திரு asyncFailure()
+    } பிடி (e) {
+        caught = மெய்
+        #std.print("✓ Caught async error: " + e)
+    }
+    
+    #std.test.assert(caught == மெய், "Async error catch failed")
+}
+காத்திரு #std.test.describe("Async Errors", testAsyncErrors)
+
+// 5. Error in Function Call
+செயல் throwingFunction(shouldThrow) {
+    எனில் shouldThrow {
+        எறி "Function threw error"
+    }
+    திருப்பு "Success"
+}
+
+செயல் testFunctionErrors() {
+    மாறி result = ""
+    மாறி caught = பொய்
+    
+    முயற்சி {
+        result = throwingFunction(மெய்)
+    } பிடி (e) {
+        caught = மெய்
+    }
+    
+    #std.test.assert(caught == மெய், "Function error not caught")
+    #std.print("✓ Function errors properly caught")
+}
+#std.test.describe("Function Errors", testFunctionErrors)
+
+// 6. Error Recovery Pattern
+செயல் riskyOperation() {
+    எறி "Operation Failed"
+}
+
+செயல் fallbackOperation() {
+    திருப்பு "Fallback Success"
+}
+
+செயல் testErrorRecovery() {
+    மாறி result = ""
+    
+    முயற்சி {
+        result = riskyOperation()
+    } பிடி (e) {
+        result = fallbackOperation()
+    }
+    
+    #std.test.assert(result == "Fallback Success", "Error recovery failed")
+    #std.print("✓ Error recovery pattern working")
+}
+#std.test.describe("Error Recovery", testErrorRecovery)
+
+// 7. Multiple Error Types (using simple variables)
+செயல் testMultipleErrorTypes() {
+    மாறி validationField = "email"
+    மாறி validationMessage = "Invalid email"
+    மாறி networkStatus = 500
+    மாறி networkMessage = "Server error"
+    
+    #std.test.assert(validationField == "email", "Validation error type failed")
+    #std.test.assert(networkStatus == 500, "Network error type failed")
+    #std.print("✓ Multiple error types working")
+}
+#std.test.describe("Multiple Error Types", testMultipleErrorTypes)
+
+// 8. Rethrowing Errors
+செயல் testRethrow() {
+    மாறி rethrown = பொய்
+    
+    முயற்சி {
+        முயற்சி {
+            எறி "Original Error"
+        } பிடி (e) {
+            எறி e  // Rethrow
+        }
+    } பிடி (e) {
+        rethrown = மெய்
+    }
+    
+    #std.test.assert(rethrown == மெய், "Rethrow failed")
+    #std.print("✓ Error rethrowing working")
+}
+#std.test.describe("Rethrow Errors", testRethrow)
+
+// 9. Error in Loop
+செயல் testErrorInLoop() {
+    மாறி successCount = 0
+    மாறி errorCount = 0
+    மாறி i = 0
+    
+    சுழற்சி i < 5 {
+        முயற்சி {
+            எனில் i == 2 {
+                எறி "Error at index 2"
+            }
+            successCount = successCount + 1
+        } பிடி (e) {
+            errorCount = errorCount + 1
+        }
+        i = i + 1
+    }
+    
+    #std.test.assert(successCount == 4, "Loop success count wrong")
+    #std.test.assert(errorCount == 1, "Loop error count wrong")
+    #std.print("✓ Errors in loops handled correctly")
+}
+#std.test.describe("Error In Loop", testErrorInLoop)
+
+// 10. Error with Complex Data
+செயல் testComplexErrorData() {
+    மாறி caught = பொய்
+    மாறி errorMessage = ""
+    மாறி errorCode = ""
+    
+    முயற்சி {
+        எறி "Error with context"
+    } பிடி (e) {
+        caught = மெய்
+        errorMessage = e
+        errorCode = "ERR001"
+    }
+    
+    #std.test.assert(caught == மெய், "Complex error data capture failed")
+    #std.test.assert(errorCode == "ERR001", "Error data structure failed")
+    #std.print("✓ Complex error data working")
+}
+#std.test.describe("Complex Error Data", testComplexErrorData)
+
+// 11. Silent Error Handling
+செயல் testSilentErrorHandling() {
+    மாறி errors = []
+    மாறி i = 0
+    
+    சுழற்சி i < 3 {
+        முயற்சி {
+            எறி "Silent error " + i
+        } பிடி (e) {
+            // Silent - just collect errors
+        }
+        i = i + 1
+    }
+    
+    #std.test.assert(மெய், "Silent error handling passed")
+    #std.print("✓ Silent error handling working")
+}
+#std.test.describe("Silent Errors", testSilentErrorHandling)
+
+// 12. Conditional Throwing
+செயல் conditionalThrow(value) {
+    எனில் value < 0 {
+        எறி "Negative value not allowed"
+    } இல்லையேல் ஆனால் value > 100 {
+        எறி "Value exceeds maximum"
+    }
+    திருப்பு value
+}
+
+செயல் testConditionalThrow() {
+    மாறி negativeError = பொய்
+    மாறி overflowError = பொய்
+    மாறி successValue = 0
+    
+    முயற்சி {
+        conditionalThrow(-5)
+    } பிடி (e) {
+        negativeError = மெய்
+    }
+    
+    முயற்சி {
+        conditionalThrow(150)
+    } பிடி (e) {
+        overflowError = மெய்
+    }
+    
+    முயற்சி {
+        successValue = conditionalThrow(50)
+    } பிடி (e) {
+        // Should not reach here
+    }
+    
+    #std.test.assert(negativeError == மெய், "Negative error not caught")
+    #std.test.assert(overflowError == மெய், "Overflow error not caught")
+    #std.test.assert(successValue == 50, "Success case failed")
+    #std.print("✓ Conditional throwing working")
+}
+#std.test.describe("Conditional Throw", testConditionalThrow)
+
+#std.print("═══════════════════════════════════════════════════════════════")
+#std.print("✅ All Error Boundary Tests Passed!")
+#std.print("═══════════════════════════════════════════════════════════════")

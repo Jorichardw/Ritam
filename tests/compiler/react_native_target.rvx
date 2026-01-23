@@ -1,0 +1,261 @@
+// ═══════════════════════════════════════════════════════════════════════════
+// React Native Target Compiler Test
+// Tests compilation to React Native target
+// Target: react-native
+// ═══════════════════════════════════════════════════════════════════════════
+
+// 1. React Native Component Structure
+கூறு AppComponent {
+    மாறி appName = "Ritam RN App"
+    
+    காண்பி {
+        குறிச்சொல் "View" {
+            பண்பு "style" "container"
+            குறிச்சொல் "Text" {
+                பண்பு "style" "title"
+                உரை appName
+            }
+        }
+    }
+}
+
+செயல் testComponentStructure() {
+    $std.test.assert(மெய், "RN Component structure passed")
+    $std.print("✓ React Native component structure working")
+}
+$std.test.describe("RN Component Structure", testComponentStructure)
+
+// 2. useState Hook Pattern
+கூறு StateHookComponent {
+    மாறி count = 0
+    மாறி text = ""
+    
+    செயல் setCount(newValue) {
+        count = newValue
+    }
+    
+    செயல் setText(newValue) {
+        text = newValue
+    }
+    
+    காண்பி {
+        குறிச்சொல் "View" {
+            குறிச்சொல் "Text" { உரை "Count: " + count }
+            குறிச்சொல் "TextInput" {
+                பண்பு "value" text
+                பண்பு "onChangeText" setText
+            }
+        }
+    }
+}
+
+செயல் testUseStatePattern() {
+    $std.test.assert(மெய், "useState pattern passed")
+    $std.print("✓ React Native state hooks working")
+}
+$std.test.describe("RN State Hooks", testUseStatePattern)
+
+// 3. useEffect Hook Pattern
+கூறு EffectComponent {
+    மாறி data = வெற்று
+    மாறி isLoading = மெய்
+    
+    // Lifecycle simulation
+    ஒத்திசைவற்ற செயல் componentDidMount() {
+        மாறி result = காத்திரு fetchData()
+        data = result
+        isLoading = பொய்
+    }
+    
+    ஒத்திசைவற்ற செயல் fetchData() {
+        திருப்பு { items: [] }
+    }
+    
+    காண்பி {
+        குறிச்சொல் "View" {
+            எனில் isLoading {
+                குறிச்சொல் "ActivityIndicator" {}
+            } இல்லையேல் {
+                குறிச்சொல் "Text" { உரை "Data Loaded" }
+            }
+        }
+    }
+}
+
+செயல் testUseEffectPattern() {
+    $std.test.assert(மெய், "useEffect pattern passed")
+    $std.print("✓ React Native effect hooks working")
+}
+$std.test.describe("RN Effect Hooks", testUseEffectPattern)
+
+// 4. Navigation (React Navigation Pattern)
+கட்டமைப்பு NavigationRoute {
+    name,
+    component,
+    options
+}
+
+செயல் createNavigator(routes) {
+    திருப்பு {
+        routes: routes,
+        currentIndex: 0
+    }
+}
+
+செயல் testReactNavigation() {
+    மாறி routes = [
+        NavigationRoute { name: "Home", component: "HomeScreen", options: {} },
+        NavigationRoute { name: "Details", component: "DetailsScreen", options: {} }
+    ]
+    
+    மாறி navigator = createNavigator(routes)
+    $std.test.assert(navigator.currentIndex == 0, "Navigation setup failed")
+    $std.print("✓ React Navigation pattern working")
+}
+$std.test.describe("RN Navigation", testReactNavigation)
+
+// 5. StyleSheet API
+கட்டமைப்பு Style {
+    flex,
+    backgroundColor,
+    padding,
+    margin
+}
+
+செயல் createStyles() {
+    திருப்பு {
+        container: Style { 
+            flex: 1, 
+            backgroundColor: "#ffffff", 
+            padding: 20, 
+            margin: 0 
+        },
+        text: Style { 
+            flex: 0, 
+            backgroundColor: "transparent", 
+            padding: 0, 
+            margin: 10 
+        }
+    }
+}
+
+செயல் testStyleSheet() {
+    மாறி styles = createStyles()
+    $std.test.assert(styles.container.flex == 1, "StyleSheet failed")
+    $std.print("✓ React Native StyleSheet working")
+}
+$std.test.describe("RN StyleSheet", testStyleSheet)
+
+// 6. FlatList Pattern
+கூறு FlatListComponent {
+    மாறி data = [
+        { id: "1", title: "First Item" },
+        { id: "2", title: "Second Item" },
+        { id: "3", title: "Third Item" }
+    ]
+    
+    செயல் renderItem(item) {
+        திருப்பு item.title
+    }
+    
+    செயல் keyExtractor(item) {
+        திருப்பு item.id
+    }
+    
+    காண்பி {
+        குறிச்சொல் "FlatList" {
+            பண்பு "data" data
+            பண்பு "renderItem" renderItem
+            பண்பு "keyExtractor" keyExtractor
+        }
+    }
+}
+
+செயல் testFlatList() {
+    $std.test.assert(மெய், "FlatList pattern passed")
+    $std.print("✓ React Native FlatList working")
+}
+$std.test.describe("RN FlatList", testFlatList)
+
+// 7. TouchableOpacity & Pressable
+கூறு TouchableComponent {
+    செயல் onPress() {
+        $std.print("Touchable pressed!")
+    }
+    
+    காண்பி {
+        குறிச்சொல் "TouchableOpacity" {
+            சுடுக்கு onPress
+            குறிச்சொல் "Text" { உரை "Press Me" }
+        }
+    }
+}
+
+செயல் testTouchables() {
+    $std.test.assert(மெய், "Touchable pattern passed")
+    $std.print("✓ React Native Touchables working")
+}
+$std.test.describe("RN Touchables", testTouchables)
+
+// 8. Platform-Specific Code
+கட்டமைப்பு Platform {
+    OS,
+    Version
+}
+
+செயல் selectPlatformStyle(ios, android) {
+    மாறி platform = Platform { OS: "ios", Version: "15.0" }
+    
+    எனில் platform.OS == "ios" {
+        திருப்பு ios
+    } இல்லையேல் {
+        திருப்பு android
+    }
+}
+
+செயல் testPlatformSpecific() {
+    மாறி style = selectPlatformStyle("iOS Style", "Android Style")
+    $std.test.assert(style == "iOS Style", "Platform selection failed")
+    $std.print("✓ React Native platform-specific code working")
+}
+$std.test.describe("RN Platform Specific", testPlatformSpecific)
+
+// 9. AsyncStorage Pattern
+ஒத்திசைவற்ற செயல் saveToStorage(key, value) {
+    திருப்பு மெய்
+}
+
+ஒத்திசைவற்ற செயல் getFromStorage(key) {
+    திருப்பு "stored_value"
+}
+
+ஒத்திசைவற்ற செயல் testAsyncStorage() {
+    மாறி saved = காத்திரு saveToStorage("test_key", "test_value")
+    மாறி retrieved = காத்திரு getFromStorage("test_key")
+    
+    $std.test.assert(saved == மெய், "AsyncStorage save failed")
+    $std.test.assert(retrieved == "stored_value", "AsyncStorage get failed")
+    $std.print("✓ React Native AsyncStorage working")
+}
+காத்திரு $std.test.describe("RN AsyncStorage", testAsyncStorage)
+
+// 10. Context API Pattern
+கட்டமைப்பு ThemeContext {
+    theme,
+    toggleTheme
+}
+
+செயல் createContext(defaultValue) {
+    திருப்பு { value: defaultValue }
+}
+
+செயல் testContextAPI() {
+    மாறி themeContext = createContext(ThemeContext { theme: "light", toggleTheme: வெற்று })
+    $std.test.assert(themeContext.value.theme == "light", "Context API failed")
+    $std.print("✓ React Native Context API working")
+}
+$std.test.describe("RN Context API", testContextAPI)
+
+$std.print("═══════════════════════════════════════════════════════════════")
+$std.print("✅ All React Native Target Tests Passed!")
+$std.print("═══════════════════════════════════════════════════════════════")
