@@ -2,11 +2,7 @@
 
 **Program in your own language. Build for the real world.**
 
-Ritam is a universal, full-stack, cross-platform programming language that allows developers to write software entirely in their native human language.  
-It is designed for sovereignty, clarity, and serious production use across web, backend, and mobile platforms.
-
-> Ritam is not a translation layer — it is a **native-language compiler**.
-
+A multilingual, full-stack programming language that lets developers write code in native human languages like Tamil, Hindi, Telugu, Kannada, Malayalam, and Spanish. Ritam compiles to Web, Node.js, and modern application platforms.
 ---
 
 ## ✨ Why Ritam?
