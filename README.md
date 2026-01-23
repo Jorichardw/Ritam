@@ -2,11 +2,8 @@
 
 **Program in your own language. Build for the real world.**
 
-Ritam is a universal, full-stack, cross-platform programming language that allows developers to write software entirely in their native human language.  
-It is designed for sovereignty, clarity, and serious production use across web, backend, and mobile platforms.
-
-> Ritam is not a translation layer — it is a **native-language compiler**.
-
+=======
+A multilingual, full-stack programming language that lets developers write code in native human languages like Tamil, Hindi, Telugu, Kannada, Malayalam, and Spanish. Ritam compiles to Web, Node.js, and modern application platforms.
 ---
 
 ## ✨ Why Ritam?
@@ -19,8 +16,6 @@ It is designed for sovereignty, clarity, and serious production use across web, 
 - 🎓 Ideal for education, governance, and inclusive computing
 - 🚀 Built for long-term production and digital sovereignty
 
----
-
 ## 🚀 Quick Example (100% Native Script)
 
 ### Tamil
@@ -28,9 +23,11 @@ It is designed for sovereignty, clarity, and serious production use across web, 
 செயல் வணக்கம்() {
     பதிவிடு("வணக்கம் உலகம்!")
 }
-Output:
+Output
 
 வணக்கம் உலகம்!
+No English keywords. No transliteration. Pure native code.
+
 
 🧩 Language Basics
 Variables & Constants
@@ -55,12 +52,14 @@ Variables & Constants
 }
 
 🌏 Supported Languages
-Language	    Script	      Status
-Tamil	        தமிழ்	      ✅ Production
-Hindi	        हिंदी  	      ✅ Production
-Telugu	      తెలుగు	    ✅ Production
-Kannada	      ಕನ್ನಡ	      ✅ Production
-Malayalam     മലയാളം   ✅ Production
+Language	Script	Status
+Tamil	    தமிழ்	    ✅ Production
+Hindi	    हिंदी  	      ✅ Production
+Telugu	    తెలుగు	    ✅ Production
+Kannada	    ಕನ್ನಡ	   ✅ Production
+Malayalam   മലയാളം	✅ Production
+All supported languages include native keywords, native error messages, and syntax parity.
+
 
 🧠 Core Language Keywords
 Native    Keyword     Concept
@@ -68,7 +67,6 @@ Native    Keyword     Concept
 மாறி    -  चर      -   Variable
 எனில்   -  अगर     -   Conditional
 இல்லை -  अन्यथा    -   Else
-சுழற்சி  -  जबतक    -   Loop
 திருப்பு  - वापस	    -  Return
 மெய்    - பொய்	   Boolean
 
@@ -102,9 +100,9 @@ ritam repl
 🎯 Compilation Targets
 Target	                    Output	Status
 Web	.js	                     ✅     Production
-Node.js	.js  	               ✅     Production
-React Native	.jsx	         🧪     Alpha
-Mobile (Swift)	.swift	     🧪     Alpha
+Node.js	.js  	             ✅     Production
+React Native	.jsx	     🧪     Alpha
+
 
 🖥️ Native Error Messages
 Errors always appear in the same language as your source code.
